@@ -1,0 +1,1370 @@
+
+
+  <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <form [formGroup]="angForm" novalidate>
+        <div class="card-body">
+          <ngb-tabset class="nav-fill">
+            <ngb-tab title="Personal">
+              <ng-template ngbTabContent>
+                <div class="media">
+                  <div class="media-body">
+                    <p>
+                      Employee personal details
+                    </p>
+                    <div class="col-12 grid-margin">
+                      <div class="card">
+                        <div class="card-body">
+                          <form class="form-sample">
+                            <p class="card-description">
+                              Personal info
+                            </p>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Employee ID</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" formControlName="empId" />
+                                  </div>
+                                  <div *ngIf="angForm.controls['empId'].invalid && (angForm.controls['empId'].dirty || angForm.controls['empId'].touched)" class="alert alert-danger">
+                                    <div *ngIf="angForm.controls['empId'].errors.required">
+                                      Employee id is required!
+                                    </div>
+                                </div>                              
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">First Name</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" formControlName="empName" />
+                                  </div>
+
+                                  <div *ngIf="angForm.controls['empName'].invalid && (angForm.controls['empName'].dirty || angForm.controls['empName'].touched)" class="alert alert-danger">
+                                    <div *ngIf="angForm.controls['empName'].errors.required">
+                                      Employee name is required!
+                                    </div>
+                                </div>      
+
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Last Name</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Marital Status</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>Married</option>
+                                      <option>Single</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Gender</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>Male</option>
+                                      <option>Female</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Date of Birth</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Nationality</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>BANGLADESHI</option>
+                                      <option>SRILANKAN</option>
+                                      <option>INDIAN</option>
+                                      <option>PAKISTANI</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Status</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>Active</option>
+                                      <option>Inactive</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Blood Group</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option value="BGI-1">A+</option>
+                                      <option value="BGI-2">A-</option>
+                                      <option value="BGI-3">B+</option>
+                                      <option value="BGI-4">B-</option>
+                                      <option value="BGI-5">O+</option>
+                                      <option value="BGI-6">O-</option>
+                                      <option value="BGI-7">AB+</option>
+                                      <option value="BGI-8">AB-</option>
+                                      <option value="BGI-9">N/A</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Identity Mark</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Religion</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>HINDUISM</option>
+                                      <option>ISLAM</option>
+                                      <option>BUDDHISM</option>
+                                      <option>CHRISTIAN</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Mail</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Mobile No</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">National ID</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Passport No</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Place of Issue</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Valid Till</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div class="col-md-6">
+                              <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Membership</label>
+                                <div class="col-sm-4">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked>
+                                      Free
+                                      <i class="input-helper"></i>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-sm-5">
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2">
+                                      Professional
+                                      <i class="input-helper"></i>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div> -->
+                            </div>
+                            <p class="card-description">
+                              Reference
+                            </p>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Reference 1</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Reference 2</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <!-- Employee Official - Starts -->
+            <ngb-tab title="Official">
+              <ng-template ngbTabContent>
+                <div class="media">
+                  <div class="media-body">
+                    <p>
+                      Employee official details
+                    </p>
+                    <div class="col-12 grid-margin">
+                      <div class="card">
+                        <div class="card-body">
+                          <form class="form-sample">
+                            <p class="card-description">
+                              Company info
+                            </p>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Compnay Name</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option value="C0004">KDS PRINTING</option>
+                                      <option value="C0005">IK</option>
+                                      <option value="C0006">MD House</option>
+                                      <option value="C0007">KDS IDR</option>
+                                      <option value="C0001">KDS GARMENT</option>
+                                      <option value="C0010">IDR WASHING</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Department</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option value="D0016">MARKETING & SALES</option>
+                                      <option value="D0029">AUTOMATION & SYSTEMS</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Section</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option value="D0016">MARKETING & SALES</option>
+                                      <option value="D0029">AUTOMATION & SYSTEMS</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Proximity Card</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="Proximity Card" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Fingerprint No</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="Fingerprint" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Manag. Section</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option value="D0016">MARKETING & SALES</option>
+                                      <option value="D0029">AUTOMATION & SYSTEMS</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+
+
+
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Designation</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>Management Trainee</option>
+                                      <option>Software Developer</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Employee Type</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>Management</option>
+                                      <option>Worker</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Employee Status</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>Active</option>
+                                      <option>Inactive</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Pay Type</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>BANK</option>
+                                      <option>CASH</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Bank</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>SCB</option>
+                                      <option>HSBC</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Account No</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="Account No" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">TIN No</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="TIN No" />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Rels. Date</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Resignation Date</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Reason</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="Reason" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Shift</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>SHIFT 1</option>
+                                      <option>SHIFT 2</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Weekly Off</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>FRIDAY</option>
+                                      <option>SUNDAY</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Leave Category</label>
+                                  <div class="col-sm-9">
+                                    <select class="form-control">
+                                      <option>Management</option>
+                                      <option>Worker</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <!-- Date  - Starts-->
+                            <p class="card-description">
+                              Date
+                            </p>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-4 col-form-label">Application Date</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-4 col-form-label">Interview Date</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-4 col-form-label">Joining Date</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-4 col-form-label">Confirmation Date</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                            <!-- Date  - Ends-->
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <!-- Employee Official - Ends -->
+
+            <!-- Employee address - Starts -->
+            <ngb-tab title="Address">
+              <ng-template ngbTabContent>
+                <div class="media">
+                  <div class="media-body">
+                    <p>
+                      Employee address
+                    </p>
+
+                    <div id="parent">
+                      <div id="left" class="col-6 grid-margin">
+                        <div class="card">
+                          <div class="card-body">
+                            <form class="form-sample">
+                              <p class="card-description">
+                                Permanent Address
+                              </p>
+
+                              <div class="row">
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Address</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Address" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Village</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Village" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">P.O</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="P.O" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">P.S</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="P.S" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">City</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="City" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">District</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="District" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Pin Code</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Pin Code" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Phone</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Phone" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Fax</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Fax" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Contact</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Contact" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div id="right" class="col-6 grid-margin">
+                        <div class="card">
+                          <div class="card-body">
+                            <form class="form-sample">
+                              <p class="card-description">
+                                Present Address
+                              </p>
+
+                              <div class="row">
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Address</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Address" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Village</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Village" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">P.O</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="P.O" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">P.S</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="P.S" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">City</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="City" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">District</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="District" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Pin Code</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Pin Code" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Phone</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Phone" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Fax</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Fax" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-9">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Contact</label>
+                                    <div class="col-sm-9">
+                                      <input class="form-control" placeholder="Contact" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <!-- Employee address - Ends -->
+
+            <ngb-tab title="Education">
+              <ng-template ngbTabContent>
+                <p>
+                  Employee education
+                </p>
+
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <form class="form-sample">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Institute Name</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Institute Name" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Passed Exam</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Passed Exam" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Division</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Division" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Year</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Year" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Marks</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Marks" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Board</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Board" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Subject</label>
+                              <div class="col-sm-12">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" />
+                                  <span class="input-group-btn">
+                                    &nbsp;&nbsp;<input type="button" class="btn btn-success" value="Add" />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-12">
+                            <table class="table">
+                              <tr>
+                                <th>Institute</th>
+                                <th>Degree</th>
+                                <th>Year</th>
+                                <th>Country</th>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                            </table>
+                          </div>
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+
+            <ngb-tab title="Short Course">
+              <ng-template ngbTabContent>
+                <h4>Short Course</h4>
+                <p>
+                  Employee short course
+                </p>
+
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <form class="form-sample">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Course Name</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Course Name" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Conducted By</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Conducted By" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">From</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" placeholder="dd/mm/yyyy" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">To</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" placeholder="dd/mm/yyyy" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Certificate</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-12">
+                            <table class="table">
+                              <tr>
+                                <th>Course Name</th>
+                                <th>Conducted By</th>
+                                <th>From</th>
+                                <th>To</th>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                            </table>
+                          </div>
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+
+            <ngb-tab title="Training">
+              <ng-template ngbTabContent>
+                <h4>Training</h4>
+                <p>
+                  Employee training
+                </p>
+
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <form class="form-sample">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Course Name</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Course Name" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Conducted By</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Conducted By" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">From</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" placeholder="dd/mm/yyyy" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">To</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" placeholder="dd/mm/yyyy" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Certificate</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Skill Type</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-12">
+                            <table class="table">
+                              <tr>
+                                <th>Course Name</th>
+                                <th>Conducted By</th>
+                                <th>From</th>
+                                <th>To</th>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                            </table>
+                          </div>
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Experience">
+              <ng-template ngbTabContent>
+                <h4>Experience</h4>
+                <p>
+                  Employee experience
+                </p>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Family">
+              <ng-template ngbTabContent>
+                <h4>Family</h4>
+                <p>
+                  Employee family
+                </p>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Search">
+              <ng-template ngbTabContent>
+                <h4>Address</h4>
+                <p>
+                  Search employee details here
+                </p>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+
+          <button type="submit"
+          [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+          Save
+        </button>
+        </div>
+      </form>
+      </div>
+    </div>
+
+
+    <!-- <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Vertical Tabs</h4>
+        <p class="card-description">Add class
+          <code>.tab-vertical</code> for vertical tabs
+        </p>
+        <ngb-tabset class="tab-vertical">
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Home
+              <i class="mdi mdi-home-outline text-info ml-2"></i>
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="text-center">
+                <img class="mr-3 w-25 mb-4" src="assets/images/samples/300x300/12.jpg" alt="sample image">
+              </div>
+              <p>
+                Inhabiting discretion the her dispatched decisively boisterous joy. So form were wish open is able of mile of. Waiting express
+                if prevent it we an musical. Especially reasonable travelling
+              </p>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Profile
+              <i class="mdi mdi-account-outline text-danger ml-2"></i>
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="text-center">
+                <img class="mb-3 w-25 rounded" src="assets/images/faces/face1.jpg" alt="sample image">
+                <h5 class="mt-0">Adam John</h5>
+                <p class="mb-0">UX specialist</p>
+                <p class="mb-0">Florida</p>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Reach
+              <i class="mdi mdi-email-outline text-success ml-2"></i>
+            </ng-template>
+            <ng-template ngbTabContent>
+              <h4>Contact us </h4>
+              <p>
+                Feel free to contact us if you have any questions!
+              </p>
+              <p>
+                <i class="mdi mdi-phone text-info"></i>
+                +123456789
+              </p>
+              <p>
+                <i class="mdi mdi-email-outline text-success"></i>
+                contactus@example.com
+              </p>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Pills</h4>
+        <p class="card-description">Basic nav pills</p>
+        <ngb-tabset type="pills" class="pills-success">
+          <ngb-tab title="Home">
+            <ng-template ngbTabContent>
+              <div class="media">
+                <img class="mr-3 w-25 rounded" src="assets/images/samples/300x300/12.jpg" alt="sample image">
+                <div class="media-body">
+                  <h5 class="mt-0">I'm doing mental jumping jacks.</h5>
+                  <p>Only you could make those words cute. Oh I beg to differ, I think we have a lot to discuss. After all,
+                    you are a client. I am not a killer. I feel like a jigsaw puzzle missing a piece. And I'm not even sure
+                    what the picture should be.</p>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Profile">
+            <ng-template ngbTabContent>
+              <div class="media">
+                <img class="mr-3 w-25 rounded" src="assets/images/samples/300x300/11.jpg" alt="sample image">
+                <div class="media-body">
+                  <p>I'm thinking two circus clowns dancing. You? Finding a needle in a haystack isn't hard when every straw
+                    is computerized. Tell him time is of the essence. Somehow, I doubt that. You have a good heart, Dexter.</p>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Contact">
+            <ng-template ngbTabContent>
+              <div class="media">
+                <img class="mr-3 w-25 rounded" src="assets/images/samples/300x300/14.jpg" alt="sample image">
+                <div class="media-body">
+                  <p>
+                    I'm really more an apartment person. This man is a knight in shining armor. Oh I beg to differ, I think we have a lot to
+                    discuss. After all, you are a client. You all right, Dexter?
+                  </p>
+                  <p>
+                    I'm generally confused most of the time. Cops, another community I'm not part of. You're a killer. I catch killers. Hello,
+                    Dexter Morgan.
+                  </p>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Vertical Pills</h4>
+        <p class="card-description">Add class
+          <code>.pills-vertical</code> for vertical pills
+        </p>
+        <ngb-tabset type="pills" class="pills-vertical pills-info">
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              <i class="mdi mdi-home-outline"></i>
+              Home
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="media">
+                <img class="mr-3 w-25 rounded" src="assets/images/samples/300x300/11.jpg" alt="sample image">
+                <div class="media-body">
+                  <h5 class="mt-0">I'm doing mental jumping jacks.</h5>
+                  <p>
+                    Only you could make those words cute. Oh I beg to differ, I think we have a lot to discuss. After all, you are a client.
+                    I am not a killer.
+                  </p>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              <i class="mdi mdi-account-outline"></i>
+              Profile
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="media">
+                <img class="mr-3 w-25 rounded" src="assets/images/samples/300x300/11.jpg" alt="sample image">
+                <div class="media-body">
+                  <p>I'm thinking two circus clowns dancing. You? Finding a needle in a haystack isn't hard when every straw
+                    is computerized. Tell him time is of the essence. Somehow, I doubt that. You have a good heart, Dexter.</p>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              <i class="mdi mdi-email-open-outline"></i>
+              Mail
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="media">
+                <img class="mr-3 w-25 rounded" src="assets/images/samples/300x300/14.jpg" alt="sample image">
+                <div class="media-body">
+                  <p>
+                    I'm really more an apartment person. This man is a knight in shining armor. Oh I beg to differ, I think we have a lot to
+                    discuss. After all, you are a client. You all right, Dexter?
+                  </p>
+                  <p>
+                    I'm generally confused most of the time. Cops, another community I'm not part of. You're a killer. I catch killers. Hello,
+                    Dexter Morgan.
+                  </p>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div> -->
+  </div>
