@@ -1,0 +1,14 @@
+#parent {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  #left {
+    width: 40%;
+  }
+  
+  #right {
+    width: 40%;
+  }
+
+  .pull-left { flex-grow: 1; }

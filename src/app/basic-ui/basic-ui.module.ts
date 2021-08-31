@@ -16,6 +16,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { TypographyComponent } from './typography/typography.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { SaveEmployeeInfoComponent } from '../save-employee-info/save-employee-info.component';
 
 const routes: Routes = [
   { path: 'accordions', component: AccordionsComponent },
@@ -30,7 +31,7 @@ const routes: Routes = [
   { path: 'tabs', component: TabsComponent },
   { path: 'tooltips', component: TooltipsComponent },
   { path: 'typography', component: TypographyComponent },
-  { path: 'notifications', component: NotificationsComponent },
+  { path: 'notifications', component: NotificationsComponent }
 ];
 
 @NgModule({

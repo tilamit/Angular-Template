@@ -19,6 +19,8 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { UserService } from 'src/app/service/UserService';
 import { HttpClientModule} from '@angular/common/http';
+import { TabComponent } from './tabs/tab.component';
+import { SaveEmployeeInfoComponent } from './save-employee-info/save-employee-info.component';
 
 @NgModule({
   declarations: [ 
@@ -30,7 +32,9 @@ import { HttpClientModule} from '@angular/common/http';
     TodoListComponent,
     TodoComponent,
     SpinnerComponent,
-    ContentAnimateDirective
+    ContentAnimateDirective,
+    TabComponent,
+    SaveEmployeeInfoComponent
   ],
   imports: [
     BrowserModule,

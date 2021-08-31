@@ -11,7 +11,7 @@ export class EmployeeInformation {
   vFullNameInBengali: string;
   vGenderID: string;
   vMaritalStatusID: string;
-  dDateOfBirth: Date;
+  dDateOfBirth: string;
   vAgeAtJoining: string;
   vIdentificationMark: string;
   vBloodGroupID: string;
@@ -52,7 +52,7 @@ export class EmployeeInformation {
   ActiveStatus: string;
   PassportNo: string;
   PlaceOfIssue: string;
-  ValidTill: Date;
+  ValidTill: string;
   Ref1: string;
   Ref2: string;
 
