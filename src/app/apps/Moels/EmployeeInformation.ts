@@ -117,6 +117,7 @@ export class EmployeeInformation {
   Marks: string;
   Board: string;
   Subject: string;
+  Country: string;
   // #endregion 
 
   // #region <Employee Short Course>

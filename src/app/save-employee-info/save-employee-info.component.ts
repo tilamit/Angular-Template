@@ -11,7 +11,7 @@ import { EmployeeInformation } from 'src/app/apps/Moels/EmployeeInformation';
 export class SaveEmployeeInfoComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
-    this.createForm();
+    this.validateForm();
   }
 
   ngOnInit() {
@@ -41,11 +41,16 @@ export class SaveEmployeeInfoComponent implements OnInit {
   Ref1: string;
   Ref2: string;
 
+  public InstituteName: string;
+  public PassedExam: string;
+  public Year: string;
+  public rows: Array<{InstituteName: string, PassedExam: string, Year: string}> = [];
+
     //Save employee details
     AddEmployee(addEmp: NgForm) {
-      this.createForm();
+      this.validateForm();
 
-      this.objTempEmp = new EmployeeInformation();
+      /*this.objTempEmp = new EmployeeInformation();
       this.objTempEmp.vEmployeeManualID = this.vEmployeeManualID;
       this.objTempEmp.vFirstName = this.vFirstName;
       this.objTempEmp.vLastName = this.vLastName;
@@ -64,10 +69,10 @@ export class SaveEmployeeInfoComponent implements OnInit {
       this.objTempEmp.PlaceOfIssue = this.PlaceOfIssue;
       this.objTempEmp.ValidTill = this.ValidTill;
       this.objTempEmp.Ref1 = this.Ref1;
-      this.objTempEmp.Ref2 = this.Ref2;
+      this.objTempEmp.Ref2 = this.Ref2;*/
     }
 
-    createForm() {
+    validateForm() {
       this.angForm = this.fb.group({
         empId: ['', Validators.required ],
         empFirstName: ['', Validators.required ],
@@ -89,5 +94,17 @@ export class SaveEmployeeInfoComponent implements OnInit {
         empEmpRef1: ['', Validators.required ],
         empEmpRef2: ['', Validators.required ]
       });
+    }
+
+    //Validate on button click
+    buttonClicked() {
+      alert("Button click worked and id is " + this.objTempEmp.vEmployeeManualID);
+      this.validateForm();
+    }
+
+    //Validate on button click
+    addSubjects() {
+      this.rows.push({ InstituteName: this.InstituteName, PassedExam: this.PassedExam, Year: this.Year });
+      this.validateForm();
     }
 }

@@ -796,7 +796,7 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Institute Name</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Institute Name" />
+                                <input type="text" class="form-control" [(ngModel)]="InstituteName" formcontrolname="empInstitute" [ngModelOptions]="{standalone: true}" placeholder="Institute Name" />
                               </div>
                             </div>
                           </div>
@@ -805,34 +805,34 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Passed Exam</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Passed Exam" />
+                                <input type="text" class="form-control" [(ngModel)]="PassedExam" formcontrolname="empPassedExam" [ngModelOptions]="{standalone: true}" placeholder="Passed Exam" />
                               </div>
                             </div>
                           </div>
 
-                          <div class="col-md-2">
+                          <!-- <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Division</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Division" />
+                                <input type="text" class="form-control" [(ngModel)]="Division" [ngModelOptions]="{standalone: true}" placeholder="Division" />
                               </div>
                             </div>
-                          </div>
+                          </div> -->
 
                           <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Year</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Year" />
+                                <input type="text" class="form-control" [(ngModel)]="Year" formcontrolname="empYear" [ngModelOptions]="{standalone: true}" placeholder="Year" />
                               </div>
                             </div>
                           </div>
 
-                          <div class="col-md-2">
+                          <!-- <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Marks</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Marks" />
+                                <input type="text" class="form-control" [(ngModel)]="Marks" placeholder="Marks" />
                               </div>
                             </div>
                           </div>
@@ -841,10 +841,10 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Board</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Board" />
+                                <input type="text" class="form-control" [(ngModel)]="Board" placeholder="Board" />
                               </div>
                             </div>
-                          </div>
+                          </div> -->
 
                           <div class="col-md-2">
                             <div class="form-group row">
@@ -853,7 +853,7 @@
                                 <div class="input-group">
                                   <input type="text" class="form-control" />
                                   <span class="input-group-btn">
-                                    &nbsp;&nbsp;<input type="button" class="btn btn-success" value="Add" />
+                                    &nbsp;&nbsp;<input type="button" (click)="addSubjects()" class="btn btn-success" value="Add" />
                                   </span>
                                 </div>
                               </div>
@@ -866,43 +866,11 @@
                                 <th>Institute</th>
                                 <th>Degree</th>
                                 <th>Year</th>
-                                <th>Country</th>
                               </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
+                              <tr *ngFor="let row of rows">
+                                <td>{{ row.InstituteName }}</td>
+                                <td>{{ row.PassedExam }}</td>
+                                <td>{{ row.Year }}</td>
                               </tr>
                             </table>
                           </div>
@@ -1169,7 +1137,8 @@
             </ngb-tab>
           </ngb-tabset>
 
-          <input type="button" class="btn btn-success" value="Save">
+          <!-- <input type="button" class="btn btn-success" (click)="buttonClicked()" value="Save"> -->
+          <button class="btn btn-success" (click)="buttonClicked()">Save</button>
         </div>
       </form>
       </div>
