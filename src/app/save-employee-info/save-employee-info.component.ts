@@ -48,7 +48,15 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
     //Save employee details
     AddEmployee(addEmp: NgForm) {
-      this.validateForm();
+
+      if (this.angForm.valid) {
+       
+      } else {
+        Object.keys(this.angForm.controls).forEach(field => {
+          const control = this.angForm.get(field);
+          control.markAsTouched({ onlySelf: true });
+          });
+      }
 
       /*this.objTempEmp = new EmployeeInformation();
       this.objTempEmp.vEmployeeManualID = this.vEmployeeManualID;
@@ -98,11 +106,10 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
     //Validate on button click
     buttonClicked() {
-      alert("Button click worked and id is " + this.objTempEmp.vEmployeeManualID);
-      this.validateForm();
+      alert("Button click worked and id is " + this.vEmployeeManualID);
     }
 
-    //Validate on button click
+    //Add subjects
     addSubjects() {
       this.rows.push({ InstituteName: this.InstituteName, PassedExam: this.PassedExam, Year: this.Year });
       this.validateForm();

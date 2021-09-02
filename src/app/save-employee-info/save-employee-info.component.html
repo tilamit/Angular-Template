@@ -26,7 +26,7 @@
                                   <div class="col-sm-9">
                                     <input type="text" class="form-control" [(ngModel)]="vEmployeeManualID" formControlName="empId" />
                                   
-                                    <div style="margin: 20px 0;" *ngIf="angForm.controls['empId'].invalid && (angForm.controls['empId'].dirty || angForm.controls['empId'].touched)" class="alert alert-danger">
+                                    <div style="margin: 20px 0;" *ngIf="!this.angForm.controls['empId'].valid && this.angForm.controls['empId'].touched;" class="alert alert-danger">
                                         <div *ngIf="angForm.controls['empId'].errors.required">
                                           Employee id required!
                                         </div>
@@ -52,7 +52,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Last Name</label>
                                   <div class="col-sm-9">
-                                    <input type="text" [(ngModel)]="vFirstName" class="form-control" formControlName="empLastName" />
+                                    <input type="text" [(ngModel)]="vLastName" class="form-control" formControlName="empLastName" />
 
                                     <div style="margin: 20px 0;" *ngIf="angForm.controls['empLastName'].invalid && (angForm.controls['empLastName'].dirty || angForm.controls['empLastName'].touched)" class="alert alert-danger">
                                         <div *ngIf="angForm.controls['empLastName'].errors.required">
@@ -89,13 +89,13 @@
                                   <label class="col-sm-3 col-form-label">Date of Birth</label>
                                   <div class="col-sm-9">
                                     <input class="form-control" [(ngModel)]="dDateOfBirth" formControlName="dtDob" placeholder="dd/mm/yyyy" />
-                                  </div>
 
-                                  <div style="margin: 20px 0;" *ngIf="angForm.controls['dtDob'].invalid && (angForm.controls['dtDob'].dirty || angForm.controls['dtDob'].touched)" class="alert alert-danger">
-                                    <div *ngIf="angForm.controls['dtDob'].errors.required">
-                                        Date of birth required!
-                                    </div>
-                                </div>    
+                                    <div style="margin: 20px 0;" *ngIf="angForm.controls['dtDob'].invalid && (angForm.controls['dtDob'].dirty || angForm.controls['dtDob'].touched)" class="alert alert-danger">
+                                      <div *ngIf="angForm.controls['dtDob'].errors.required">
+                                          Date of birth required!
+                                      </div>
+                                  </div>   
+                                  </div> 
                                 </div>
                               </div>
                             </div>
@@ -932,8 +932,13 @@
                           <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Certificate</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" />
+                              <div class="col-sm-12">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" />
+                                  <span class="input-group-btn">
+                                    &nbsp;&nbsp;<input type="button" (click)="addShortCourses()" class="btn btn-success" value="Add" />
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -945,10 +950,14 @@
                                 <th>Conducted By</th>
                                 <th>From</th>
                                 <th>To</th>
+                                <th>Certificate</th>
+                                <th>Skill Type</th>
                               </tr>
                               <tr>
                                 <td>ABCD</td>
                                 <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
                               </tr>
@@ -957,10 +966,6 @@
                                 <td>N/A</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
                               </tr>
@@ -969,16 +974,30 @@
                                 <td>N/A</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
                               </tr>
                               <tr>
                                 <td>ABCD</td>
                                 <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
                               </tr>
@@ -1048,12 +1067,17 @@
                               </div>
                             </div>
                           </div>
-
+                         
                           <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Skill Type</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" />
+                              <div class="col-sm-12">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" />
+                                  <span class="input-group-btn">
+                                    &nbsp;&nbsp;<input type="button" (click)="addTrainings()" class="btn btn-success" value="Add" />
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -1065,8 +1089,173 @@
                                 <th>Conducted By</th>
                                 <th>From</th>
                                 <th>To</th>
+                                <th>Certificate</th>
+                                <th>Skill Type</th>
                               </tr>
                               <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                            </table>
+                          </div>
+
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+
+            <ngb-tab title="Experience">
+              <ng-template ngbTabContent>
+                <h4>Experience</h4>
+                <p>
+                  Employee experience
+                </p>
+
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Organization</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Organization" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Address</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="Address" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Tel No.</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" placeholder="Telephone" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Designation</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" placeholder="Designation" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">From</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">To</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Leave Resaosn</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Last Salary Withdrawn</label>
+                              <div class="col-sm-12">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" />
+                                  <span class="input-group-btn">
+                                    &nbsp;&nbsp;<input type="button" (click)="addExperiences()" class="btn btn-success" value="Add" />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-12">
+                            <table class="table">
+                              <tr>
+                                <th>Organization</th>
+                                <th>Address</th>
+                                <th>Tel No.</th>
+                                <th>Designation</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Leave Reason</th>
+                                <th>Last Salary Withdrawn</th>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
                                 <td>ABCD</td>
                                 <td>N/A</td>
                                 <td>2021</td>
@@ -1077,8 +1266,6 @@
                                 <td>N/A</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
-                              </tr>
-                              <tr>
                                 <td>ABCD</td>
                                 <td>N/A</td>
                                 <td>2021</td>
@@ -1089,14 +1276,36 @@
                                 <td>N/A</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
-                              </tr>
-                              <tr>
                                 <td>ABCD</td>
                                 <td>N/A</td>
                                 <td>2021</td>
                                 <td>Bangladesh</td>
                               </tr>
                               <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
                                 <td>ABCD</td>
                                 <td>N/A</td>
                                 <td>2021</td>
@@ -1111,22 +1320,129 @@
                 </div>
               </ng-template>
             </ngb-tab>
-            <ngb-tab title="Experience">
-              <ng-template ngbTabContent>
-                <h4>Experience</h4>
-                <p>
-                  Employee experience
-                </p>
-              </ng-template>
-            </ngb-tab>
+
+
             <ngb-tab title="Family">
               <ng-template ngbTabContent>
                 <h4>Family</h4>
                 <p>
                   Employee family
                 </p>
+
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Name of Dependance</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Relationship</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Date of Birth</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Age</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-group row">
+                              <label class="col-sm-12 col-form-label">Gender</label>
+                              <div class="col-sm-12">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" />
+                                  <span class="input-group-btn">
+                                    &nbsp;&nbsp;<input type="button" (click)="addFamilies()" class="btn btn-success" value="Add" />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-12">
+                            <table class="table">
+                              <tr>
+                                <th>Name of Dependance</th>
+                                <th>Relationship</th>
+                                <th>Date of Birth</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>ABCD</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>ABCD</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>ABCD</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>ABCD</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>ABCD</td>
+                              </tr>
+                              <tr>
+                                <td>ABCD</td>
+                                <td>N/A</td>
+                                <td>2021</td>
+                                <td>Bangladesh</td>
+                                <td>ABCD</td>
+                              </tr>
+                            </table>
+                          </div>
+
+                        </div>
+                    </div>
+                  </div>
+                </div>
               </ng-template>
             </ngb-tab>
+
             <ngb-tab title="Search">
               <ng-template ngbTabContent>
                 <h4>Address</h4>
@@ -1137,8 +1453,14 @@
             </ngb-tab>
           </ngb-tabset>
 
-          <!-- <input type="button" class="btn btn-success" (click)="buttonClicked()" value="Save"> -->
-          <button class="btn btn-success" (click)="buttonClicked()">Save</button>
+          <!-- Buttons here -->
+          <div class="row">
+            <div class="col text-center">
+              <button class="btn btn-success" (click)="buttonClicked()">Save</button>
+              <button class="btn btn-primary">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+            </div>
+          </div>
         </div>
       </form>
       </div>
