@@ -1,14 +1,14 @@
 import { Component, ViewChild, OnInit  } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators, NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { EmployeeInformation } from 'src/app/apps/Moels/EmployeeInformation';
+import { EmployeeInformation } from 'src/app/apps/Models/EmployeeInformation';
 
 @Component({
   selector: 'app-save-employee-info',
   templateUrl: './save-employee-info.component.html',
   styleUrls: ['./save-employee-info.component.scss']
 })
-export class SaveEmployeeInfoComponent implements OnInit {
+export class SaveEmployeeInfoComponent implements OnInit { 
 
   constructor(private fb: FormBuilder) {
     this.validateForm();
@@ -21,6 +21,7 @@ export class SaveEmployeeInfoComponent implements OnInit {
   objTempEmp: EmployeeInformation;
   angForm: FormGroup;
 
+  //EMP_PERSONAL - STARTS
   vEmployeeManualID: string;
   vFirstName: string;
   vLastName: string;
@@ -40,23 +41,29 @@ export class SaveEmployeeInfoComponent implements OnInit {
   ValidTill: string;
   Ref1: string;
   Ref2: string;
+  //EMP_PERSONAL - ENDS
 
   public InstituteName: string;
   public PassedExam: string;
+  public Division: string;
   public Year: string;
-  public rows: Array<{InstituteName: string, PassedExam: string, Year: string}> = [];
+  public Marks: string;
+  public Board: string;
+  public Subject: string;
+
+  public CCourseName: string;
+  public CConductedBy: string;
+  public CFrom: string;
+  public CTo: string;
+  public CCertificate: string;
+
+  public rows: Array<{InstituteName: string, PassedExam: string, Division: string, Year: string, Marks: string, Board: string, Subject: string}> = [];
+  public rowsCourses: Array<{CCourseName: string, CConductedBy: string, CFrom: string, CTo: string, CCertificate: string}> = [];
 
     //Save employee details
     AddEmployee(addEmp: NgForm) {
 
       if (this.angForm.valid) {
-       
-      } else {
-        Object.keys(this.angForm.controls).forEach(field => {
-          const control = this.angForm.get(field);
-          control.markAsTouched({ onlySelf: true });
-          });
-      }
 
       /*this.objTempEmp = new EmployeeInformation();
       this.objTempEmp.vEmployeeManualID = this.vEmployeeManualID;
@@ -78,6 +85,13 @@ export class SaveEmployeeInfoComponent implements OnInit {
       this.objTempEmp.ValidTill = this.ValidTill;
       this.objTempEmp.Ref1 = this.Ref1;
       this.objTempEmp.Ref2 = this.Ref2;*/
+       
+      } else {
+        Object.keys(this.angForm.controls).forEach(field => {
+          const control = this.angForm.get(field);
+          control.markAsTouched({ onlySelf: true });
+          });
+      }
     }
 
     validateForm() {
@@ -106,12 +120,16 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
     //Validate on button click
     buttonClicked() {
-      alert("Button click worked and id is " + this.vEmployeeManualID);
+      console.log(this.angForm.value);
+      //alert("Button click worked and id is " + this.vEmployeeManualID);
     }
 
     //Add subjects
     addSubjects() {
-      this.rows.push({ InstituteName: this.InstituteName, PassedExam: this.PassedExam, Year: this.Year });
-      this.validateForm();
+      this.rows.push({ InstituteName: this.InstituteName, PassedExam: this.PassedExam, Division: this.Division, Year: this.Year, Marks: this.Marks, Board: this.Board, Subject: this.Subject });
+    }
+
+    addShortCourses() {
+      this.rowsCourses.push({ CCourseName: this.CCourseName, CConductedBy: this.CConductedBy, CFrom: this.CFrom, CTo: this.CTo, CCertificate: this.CCertificate });
     }
 }

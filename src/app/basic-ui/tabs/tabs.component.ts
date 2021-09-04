@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators, NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { EmployeeInformation } from 'src/app/apps/Moels/EmployeeInformation';
+import { EmployeeInformation } from 'src/app/apps/Models/EmployeeInformation';
 
 @Component({
   selector: 'app-tabs',

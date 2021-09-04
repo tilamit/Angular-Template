@@ -1,6 +1,4 @@
-
-
-  <div class="row">
+ <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <form [formGroup]="angForm" #addEmp='ngForm' (ngSubmit)="AddEmployee(addEmp)">
@@ -24,10 +22,10 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Employee ID</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="vEmployeeManualID" formControlName="empId" />
+                                    <input type="text" class="form-control" formControlName="vEmployeeManualID" />
                                   
-                                    <div style="margin: 20px 0;" *ngIf="!this.angForm.controls['empId'].valid && this.angForm.controls['empId'].touched;" class="alert alert-danger">
-                                        <div *ngIf="angForm.controls['empId'].errors.required">
+                                    <div style="margin: 20px 0;" *ngIf="!this.angForm.controls['vEmployeeManualID'].valid && this.angForm.controls['vEmployeeManualID'].touched;" class="alert alert-danger">
+                                        <div *ngIf="angForm.controls['vEmployeeManualID'].errors.required">
                                           Employee id required!
                                         </div>
                                     </div>    
@@ -38,10 +36,10 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">First Name</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="vFirstName" formControlName="empFirstName" />
+                                    <input type="text" class="form-control" formControlName="vFirstName" />
 
-                                    <div style="margin: 20px 0;" *ngIf="angForm.controls['empFirstName'].invalid && (angForm.controls['empFirstName'].dirty || angForm.controls['empFirstName'].touched)" class="alert alert-danger">
-                                        <div *ngIf="angForm.controls['empFirstName'].errors.required">
+                                    <div style="margin: 20px 0;" *ngIf="angForm.controls['vFirstName'].invalid && (angForm.controls['vFirstName'].dirty || angForm.controls['vFirstName'].touched)" class="alert alert-danger">
+                                        <div *ngIf="angForm.controls['vFirstName'].errors.required">
                                           First name required!
                                         </div>
                                     </div>    
@@ -52,10 +50,10 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Last Name</label>
                                   <div class="col-sm-9">
-                                    <input type="text" [(ngModel)]="vLastName" class="form-control" formControlName="empLastName" />
+                                    <input type="text" class="form-control" formControlName="vLastName" />
 
-                                    <div style="margin: 20px 0;" *ngIf="angForm.controls['empLastName'].invalid && (angForm.controls['empLastName'].dirty || angForm.controls['empLastName'].touched)" class="alert alert-danger">
-                                        <div *ngIf="angForm.controls['empLastName'].errors.required">
+                                    <div style="margin: 20px 0;" *ngIf="angForm.controls['vLastName'].invalid && (angForm.controls['vLastName'].dirty || angForm.controls['vLastName'].touched)" class="alert alert-danger">
+                                        <div *ngIf="angForm.controls['vLastName'].errors.required">
                                             Last name required!
                                         </div>
                                     </div>    
@@ -68,7 +66,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Marital Status</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control" [(ngModel)]="vMaritalStatusID" formControlName="empMaritalStatus">
+                                    <select class="form-control" formControlName="vMaritalStatusID">
                                       <option>Married</option>
                                       <option>Single</option>
                                     </select>
@@ -77,7 +75,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Gender</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control" [(ngModel)]="vGenderID" formControlName="empGender"> 
+                                    <select class="form-control" formControlName="vGenderID"> 
                                       <option>Male</option>
                                       <option>Female</option>
                                     </select>
@@ -88,10 +86,10 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Date of Birth</label>
                                   <div class="col-sm-9">
-                                    <input class="form-control" [(ngModel)]="dDateOfBirth" formControlName="dtDob" placeholder="dd/mm/yyyy" />
+                                    <input class="form-control" formControlName="dDateOfBirth" placeholder="dd/mm/yyyy" />
 
-                                    <div style="margin: 20px 0;" *ngIf="angForm.controls['dtDob'].invalid && (angForm.controls['dtDob'].dirty || angForm.controls['dtDob'].touched)" class="alert alert-danger">
-                                      <div *ngIf="angForm.controls['dtDob'].errors.required">
+                                    <div style="margin: 20px 0;" *ngIf="angForm.controls['dDateOfBirth'].invalid && (angForm.controls['dDateOfBirth'].dirty || angForm.controls['dDateOfBirth'].touched)" class="alert alert-danger">
+                                      <div *ngIf="angForm.controls['dDateOfBirth'].errors.required">
                                           Date of birth required!
                                       </div>
                                   </div>   
@@ -104,7 +102,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Nationality</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control" [(ngModel)]="vNationalityID" formControlName="empNationality">
+                                    <select class="form-control" formControlName="vNationalityID">
                                       <option>BANGLADESHI</option>
                                       <option>SRILANKAN</option>
                                       <option>INDIAN</option>
@@ -117,7 +115,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Status</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control" [(ngModel)]="EMP_Status" formControlName="empEmpStatus">
+                                    <select class="form-control" formControlName="EMP_Status">
                                       <option>Active</option>
                                       <option>Inactive</option>
                                     </select>
@@ -128,7 +126,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Blood Group</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control" [(ngModel)]="vBloodGroupID" formControlName="empEmpBlood">
+                                    <select class="form-control" formControlName="vBloodGroupID">
                                       <option value="BGI-1">A+</option>
                                       <option value="BGI-2">A-</option>
                                       <option value="BGI-3">B+</option>
@@ -146,14 +144,14 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Identity Mark</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="vIdentificationMark" formControlName="empEmpIdentity" />
+                                    <input type="text" class="form-control" formControlName="vIdentificationMark" />
 
                                     
-                                  <div style="margin: 20px 0;" *ngIf="angForm.controls['empEmpIdentity'].invalid && (angForm.controls['empEmpIdentity'].dirty || angForm.controls['empEmpIdentity'].touched)" class="alert alert-danger">
+                                  <!-- <div style="margin: 20px 0;" *ngIf="angForm.controls['empEmpIdentity'].invalid && (angForm.controls['empEmpIdentity'].dirty || angForm.controls['empEmpIdentity'].touched)" class="alert alert-danger">
                                     <div *ngIf="angForm.controls['empEmpIdentity'].errors.required">
                                         Date of birth required!
                                     </div>
-                                </div>    
+                                </div>     -->
                                   </div>
                                 </div>
                               </div>
@@ -161,7 +159,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Religion</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control" [(ngModel)]="vReligionID" formControlName="empEmpReligion">
+                                    <select class="form-control" formControlName="vReligionID">
                                       <option>HINDUISM</option>
                                       <option>ISLAM</option>
                                       <option>BUDDHISM</option>
@@ -175,7 +173,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Email</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="vReligionID" formControlName="empEmpEmail" /> 
+                                    <input type="text" class="form-control" formControlName="vReligionID" /> 
                                   </div>
                                 </div>
                               </div>
@@ -193,7 +191,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Mobile No</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="Mobile" formControlName="empEmpMobile" />
+                                    <input type="text" class="form-control" formControlName="Mobile" />
                                   </div>
                                 </div>
                               </div>
@@ -201,7 +199,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">National ID</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="NationalId" formControlName="empEmpNationalId" />
+                                    <input type="text" class="form-control" formControlName="NationalId" />
                                   </div>
                                 </div>
                               </div>
@@ -209,7 +207,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Passport No</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="PassportNo" formControlName="empEmpPassportNo" />
+                                    <input type="text" class="form-control" formControlName="PassportNo" />
                                   </div>
                                 </div>
                               </div>
@@ -217,7 +215,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Place of Issue</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="PlaceOfIssue" formControlName="empEmpPlaceOfIssue" />
+                                    <input type="text" class="form-control" formControlName="PlaceOfIssue" />
                                   </div>
                                 </div>
                               </div>
@@ -225,7 +223,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Valid Till</label>
                                   <div class="col-sm-9">
-                                    <input class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="ValidTill" formControlName="empEmpValidTill" />
+                                    <input class="form-control" placeholder="dd/mm/yyyy" formControlName="ValidTill" />
                                   </div>
                                 </div>
                               </div>
@@ -238,7 +236,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Reference 1</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="Ref1" formControlName="empEmpRef1" />
+                                    <input type="text" class="form-control" formControlName="Ref1" />
                                   </div>
                                 </div>
                               </div>
@@ -248,7 +246,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Reference 2</label>
                                   <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="Ref2" formControlName="empEmpRef2"/>
+                                    <input type="text" class="form-control" formControlName="Ref2"/>
                                   </div>
                                 </div>
                               </div>
@@ -280,7 +278,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Compnay Name</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="vCompanyDivisiionName">
                                       <option value="C0004">KDS PRINTING</option>
                                       <option value="C0005">IK</option>
                                       <option value="C0006">MD House</option>
@@ -295,7 +293,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Department</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="vDepartmentName">
                                       <option value="D0016">MARKETING & SALES</option>
                                       <option value="D0029">AUTOMATION & SYSTEMS</option>
                                     </select>
@@ -306,7 +304,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Section</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="vSectionName"> 
                                       <option value="D0016">MARKETING & SALES</option>
                                       <option value="D0029">AUTOMATION & SYSTEMS</option>
                                     </select>
@@ -327,7 +325,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Fingerprint No</label>
                                   <div class="col-sm-9">
-                                    <input class="form-control" placeholder="Fingerprint" />
+                                    <input class="form-control" placeholder="Fingerprint" formControlName="vEmployeeCardNo" />
                                   </div>
                                 </div>
                               </div>
@@ -335,7 +333,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Manag. Section</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="ManagementSectionName">
                                       <option value="D0016">MARKETING & SALES</option>
                                       <option value="D0029">AUTOMATION & SYSTEMS</option>
                                     </select>
@@ -351,7 +349,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Designation</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="vDesignationName">
                                       <option>Management Trainee</option>
                                       <option>Software Developer</option>
                                     </select>
@@ -362,7 +360,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Employee Type</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="vEmployeeTypeID">
                                       <option>Management</option>
                                       <option>Worker</option>
                                     </select>
@@ -373,7 +371,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Employee Status</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="EMP_Status">
                                       <option>Active</option>
                                       <option>Inactive</option>
                                     </select>
@@ -384,7 +382,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Pay Type</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="PayType">
                                       <option>BANK</option>
                                       <option>CASH</option>
                                     </select>
@@ -395,7 +393,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Bank</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="Bank">
                                       <option>SCB</option>
                                       <option>HSBC</option>
                                     </select>
@@ -406,7 +404,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Account No</label>
                                   <div class="col-sm-9">
-                                    <input class="form-control" placeholder="Account No" />
+                                    <input class="form-control" placeholder="Account No" formControlName="AccNo" />
                                   </div>
                                 </div>
                               </div>
@@ -414,7 +412,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">TIN No</label>
                                   <div class="col-sm-9">
-                                    <input class="form-control" placeholder="TIN No" />
+                                    <input class="form-control" placeholder="TIN No" formControlName="Tin" />
                                   </div>
                                 </div>
                               </div>
@@ -431,7 +429,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Resignation Date</label>
                                   <div class="col-sm-9">
-                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                    <input class="form-control" placeholder="dd/mm/yyyy" formControlName="ResignDate" />
                                   </div>
                                 </div>
                               </div>
@@ -439,7 +437,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Reason</label>
                                   <div class="col-sm-9">
-                                    <input class="form-control" placeholder="Reason" />
+                                    <input class="form-control" placeholder="Reason" formControlName="ResingReason" />
                                   </div>
                                 </div>
                               </div>
@@ -447,7 +445,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Shift</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="vShiftID">
                                       <option>SHIFT 1</option>
                                       <option>SHIFT 2</option>
                                     </select>
@@ -458,7 +456,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Weekly Off</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="WeeklyOffDayID">
                                       <option>FRIDAY</option>
                                       <option>SUNDAY</option>
                                     </select>
@@ -469,7 +467,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">Leave Category</label>
                                   <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="LeaveCategory">
                                       <option>Management</option>
                                       <option>Worker</option>
                                     </select>
@@ -489,7 +487,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-4 col-form-label">Application Date</label>
                                   <div class="col-sm-6">
-                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                    <input class="form-control" placeholder="dd/mm/yyyy" formControlName="dApplicationDate" />
                                   </div>
                                 </div>
                               </div>
@@ -499,7 +497,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-4 col-form-label">Interview Date</label>
                                   <div class="col-sm-6">
-                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                    <input class="form-control" placeholder="dd/mm/yyyy" formControlName="dInterviewDate" />
                                   </div>
                                 </div>
                               </div>
@@ -509,7 +507,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-4 col-form-label">Joining Date</label>
                                   <div class="col-sm-6">
-                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                    <input class="form-control" placeholder="dd/mm/yyyy" formControlName="dJoiningDate" />
                                   </div>
                                 </div>
                               </div>
@@ -520,7 +518,7 @@
                                 <div class="form-group row">
                                   <label class="col-sm-4 col-form-label">Confirmation Date</label>
                                   <div class="col-sm-6">
-                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                    <input class="form-control" placeholder="dd/mm/yyyy" formControlName="dConfirmDate" />
                                   </div>
                                 </div>
                               </div>
@@ -560,7 +558,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Address</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Address" />
+                                      <input class="form-control" placeholder="Address" formControlName="PAddress" />
                                     </div>
                                   </div>
                                 </div>
@@ -570,7 +568,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Village</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Village" />
+                                      <input class="form-control" placeholder="Village" formControlName="PVillage" />
                                     </div>
                                   </div>
                                 </div>
@@ -580,7 +578,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">P.O</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="P.O" />
+                                      <input class="form-control" placeholder="P.O" formControlName="PPo" />
                                     </div>
                                   </div>
                                 </div>
@@ -590,7 +588,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">P.S</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="P.S" />
+                                      <input class="form-control" placeholder="P.S" formControlName="PPs" />
                                     </div>
                                   </div>
                                 </div>
@@ -600,7 +598,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">City</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="City" />
+                                      <input class="form-control" placeholder="City" formControlName="PCity" />
                                     </div>
                                   </div>
                                 </div>
@@ -610,7 +608,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">District</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="District" />
+                                      <input class="form-control" placeholder="District" formControlName="PDistrict" />
                                     </div>
                                   </div>
                                 </div>
@@ -620,7 +618,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Pin Code</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Pin Code" />
+                                      <input class="form-control" placeholder="Pin Code" formControlName="PPin" />
                                     </div>
                                   </div>
                                 </div>
@@ -630,7 +628,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Phone</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Phone" />
+                                      <input class="form-control" placeholder="Phone" formControlName="PPhone" />
                                     </div>
                                   </div>
                                 </div>
@@ -640,7 +638,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Fax</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Fax" />
+                                      <input class="form-control" placeholder="Fax" formControlName="PFax" />
                                     </div>
                                   </div>
                                 </div>
@@ -650,7 +648,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Contact</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Contact" />
+                                      <input class="form-control" placeholder="Contact" formControlName="PContact"  />
                                     </div>
                                   </div>
                                 </div>
@@ -675,7 +673,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Address</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Address" />
+                                      <input class="form-control" placeholder="Address" formControlName="PrAddress" />
                                     </div>
                                   </div>
                                 </div>
@@ -685,7 +683,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Village</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Village" />
+                                      <input class="form-control" placeholder="Village" formControlName="PrVillage" />
                                     </div>
                                   </div>
                                 </div>
@@ -695,7 +693,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">P.O</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="P.O" />
+                                      <input class="form-control" placeholder="P.O" formControlName="PrPo" />
                                     </div>
                                   </div>
                                 </div>
@@ -705,7 +703,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">P.S</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="P.S" />
+                                      <input class="form-control" placeholder="P.S" formControlName="PrPs" />
                                     </div>
                                   </div>
                                 </div>
@@ -715,7 +713,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">City</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="City" />
+                                      <input class="form-control" placeholder="City" formControlName="PrCity" />
                                     </div>
                                   </div>
                                 </div>
@@ -725,7 +723,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">District</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="District" />
+                                      <input class="form-control" placeholder="District" formControlName="PrDistrict" />
                                     </div>
                                   </div>
                                 </div>
@@ -736,7 +734,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Pin Code</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Pin Code" />
+                                      <input class="form-control" placeholder="Pin Code" formControlName="PrPin" />
                                     </div>
                                   </div>
                                 </div>
@@ -746,7 +744,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Phone</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Phone" />
+                                      <input class="form-control" placeholder="Phone" formControlName="PrPhone" />
                                     </div>
                                   </div>
                                 </div>
@@ -756,7 +754,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Fax</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Fax" />
+                                      <input class="form-control" placeholder="Fax" formControlName="PrFax" />
                                     </div>
                                   </div>
                                 </div>
@@ -766,7 +764,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Contact</label>
                                     <div class="col-sm-9">
-                                      <input class="form-control" placeholder="Contact" />
+                                      <input class="form-control" placeholder="Contact" formControlName="PrContact" />
                                     </div>
                                   </div>
                                 </div>
@@ -796,7 +794,7 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Institute Name</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" [(ngModel)]="InstituteName" formcontrolname="empInstitute" [ngModelOptions]="{standalone: true}" placeholder="Institute Name" />
+                                <input type="text" class="form-control" [ngModel]="InstituteName" formcontrolname="InstituteName" [ngModelOptions]="{standalone: true}" placeholder="Institute Name" />
                               </div>
                             </div>
                           </div>
@@ -805,34 +803,34 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Passed Exam</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" [(ngModel)]="PassedExam" formcontrolname="empPassedExam" [ngModelOptions]="{standalone: true}" placeholder="Passed Exam" />
+                                <input type="text" class="form-control" [ngModel]="PassedExam" formcontrolname="PassedExam" [ngModelOptions]="{standalone: true}" placeholder="Passed Exam" />
                               </div>
                             </div>
                           </div>
 
-                          <!-- <div class="col-md-2">
+                          <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Division</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" [(ngModel)]="Division" [ngModelOptions]="{standalone: true}" placeholder="Division" />
+                                <input type="text" class="form-control" [ngModel]="Division" formcontrolname="Division" [ngModelOptions]="{standalone: true}" placeholder="Division" />
                               </div>
                             </div>
-                          </div> -->
+                          </div>
 
                           <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Year</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" [(ngModel)]="Year" formcontrolname="empYear" [ngModelOptions]="{standalone: true}" placeholder="Year" />
+                                <input type="text" class="form-control" [ngModel]="Year" formcontrolname="Year" [ngModelOptions]="{standalone: true}" placeholder="Year" />
                               </div>
                             </div>
                           </div>
 
-                          <!-- <div class="col-md-2">
+                          <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Marks</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" [(ngModel)]="Marks" placeholder="Marks" />
+                                <input type="text" class="form-control" [ngModel]="Marks" formcontrolname="Marks" placeholder="Marks" />
                               </div>
                             </div>
                           </div>
@@ -841,17 +839,17 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Board</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" [(ngModel)]="Board" placeholder="Board" />
+                                <input type="text" class="form-control" [ngModel]="Board" formcontrolname="Board" placeholder="Board" />
                               </div>
                             </div>
-                          </div> -->
+                          </div>
 
                           <div class="col-md-2">
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Subject</label>
                               <div class="col-sm-12">
                                 <div class="input-group">
-                                  <input type="text" class="form-control" />
+                                  <input type="text" class="form-control" [ngModel]="Subject" formcontrolname="Subject" />
                                   <span class="input-group-btn">
                                     &nbsp;&nbsp;<input type="button" (click)="addSubjects()" class="btn btn-success" value="Add" />
                                   </span>
@@ -865,12 +863,20 @@
                               <tr>
                                 <th>Institute</th>
                                 <th>Degree</th>
+                                <th>Division</th>
                                 <th>Year</th>
+                                <th>Marks</th>
+                                <th>Board</th>
+                                <th>Subject</th>
                               </tr>
                               <tr *ngFor="let row of rows">
                                 <td>{{ row.InstituteName }}</td>
                                 <td>{{ row.PassedExam }}</td>
+                                <td>{{ row.Division }}</td>
                                 <td>{{ row.Year }}</td>
+                                <td>{{ row.Marks }}</td>
+                                <td>{{ row.Board }}</td>
+                                <td>{{ row.Subject }}</td>
                               </tr>
                             </table>
                           </div>
@@ -897,7 +903,7 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Course Name</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Course Name" />
+                                <input type="text" class="form-control" [ngModel]="CCourseName" formcontrolname="CCourseName" [ngModelOptions]="{standalone: true}" placeholder="Course Name" />
                               </div>
                             </div>
                           </div>
@@ -906,7 +912,7 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">Conducted By</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Conducted By" />
+                                <input type="text" class="form-control" [ngModel]="CConductedBy" formcontrolname="CConductedBy" [ngModelOptions]="{standalone: true}" placeholder="Conducted By" />
                               </div>
                             </div>
                           </div>
@@ -915,7 +921,7 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">From</label>
                               <div class="col-sm-9">
-                                <input class="form-control" placeholder="dd/mm/yyyy" />
+                                <input class="form-control" [ngModel]="CFrom" formcontrolname="CFrom" [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
                               </div>
                             </div>
                           </div>
@@ -924,7 +930,7 @@
                             <div class="form-group row">
                               <label class="col-sm-12 col-form-label">To</label>
                               <div class="col-sm-9">
-                                <input class="form-control" placeholder="dd/mm/yyyy" />
+                                <input class="form-control" [ngModel]="CTo" formcontrolname="CTo" [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
                               </div>
                             </div>
                           </div>
@@ -934,7 +940,7 @@
                               <label class="col-sm-12 col-form-label">Certificate</label>
                               <div class="col-sm-12">
                                 <div class="input-group">
-                                  <input type="text" class="form-control" />
+                                  <input type="text" [ngModel]="CCertificate" formcontrolname="CCertificate" [ngModelOptions]="{standalone: true}" class="form-control" />
                                   <span class="input-group-btn">
                                     &nbsp;&nbsp;<input type="button" (click)="addShortCourses()" class="btn btn-success" value="Add" />
                                   </span>
@@ -951,55 +957,13 @@
                                 <th>From</th>
                                 <th>To</th>
                                 <th>Certificate</th>
-                                <th>Skill Type</th>
                               </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                              </tr>
-                              <tr>
-                                <td>ABCD</td>
-                                <td>N/A</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
-                                <td>2021</td>
-                                <td>Bangladesh</td>
+                              <tr *ngFor="let row of rowsCourses">
+                                <td>{{ row.CCourseName }}</td>
+                                <td>{{ row.CConductedBy }}</td>
+                                <td>{{ row.CFrom }}</td>
+                                <td>{{ row.CTo }}</td>
+                                <td>{{ row.CCertificate }}</td>
                               </tr>
                             </table>
                           </div>
