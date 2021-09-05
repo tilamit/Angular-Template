@@ -96,30 +96,54 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
     validateForm() {
       this.angForm = this.fb.group({
-        empId: ['', Validators.required ],
-        empFirstName: ['', Validators.required ],
-        empLastName: ['', Validators.required ],
-        empMaritalStatus: ['', Validators.required ],
-        empGender: ['', Validators.required ],
-        dtDob: ['', Validators.required ],
-        empNationality: ['', Validators.required ],
-        empEmpStatus: ['', Validators.required ],
-        empEmpBlood: ['', Validators.required ],
-        empEmpIdentity: ['', Validators.required ],
-        empEmpReligion: ['', Validators.required ],
-        empEmpEmail: ['', Validators.required ],
-        empEmpMobile: ['', Validators.required ],
-        empEmpNationalId: ['', Validators.required ],
-        empEmpPassportNo: ['', Validators.required ],
-        empEmpPlaceOfIssue: ['', Validators.required ],
-        empEmpValidTill: ['', Validators.required ],
-        empEmpRef1: ['', Validators.required ],
-        empEmpRef2: ['', Validators.required ]
+        vEmployeeManualID: ['', Validators.required ], 
+        vFirstName: ['', Validators.required ],
+        vLastName: ['', Validators.required ],
+        vMaritalStatusID: ['', Validators.required ],
+        vGenderID: ['', Validators.required ],
+        dDateOfBirth: ['', Validators.required ],
+        vNationalityID: ['', Validators.required ],
+        EMP_Status: ['', Validators.required ],
+        vBloodGroupID: ['', Validators.required ],
+        vIdentificationMark: ['', Validators.required ],
+        vReligionID: ['', Validators.required ],
+        Email: ['', Validators.required ],
+        Mobile: ['', Validators.required ],
+        NationalId: ['', Validators.required ],
+        PassportNo: ['', Validators.required ],
+        PlaceOfIssue: ['', Validators.required ],
+        ValidTill: ['', Validators.required ],
+        Ref1: ['', Validators.required ],
+        Ref2: ['', Validators.required ],
+
+        vCompanyDivisionName: [''],
+        vDepartmentName: [''],
+        vSectionName: [''],
+        vEmployeeCardNo: [''],
+        ManagementSectionName: [''],
+        vDesignationName: [''],
+        vEmployeeTypeID: [''],
+        //EMP_Status: [''],
+        PayType: [''],
+        Bank: [''],
+        AccNo: [''],
+        Tin: [''],
+        //
+        ResignDate: [''],
+        ResingReason: [''],
+        vShiftID: [''],
+        WeeklyOffDayID: [''],
+        LeaveCategory: [''],
+        dApplicationDate: [''],
+        dInterviewDate: [''],
+        dJoiningDate: [''],
+        dConfirmDate: ['']
       });
     }
 
     //Validate on button click
     buttonClicked() {
+      //this.validateForm();
       console.log(this.angForm.value);
       //alert("Button click worked and id is " + this.vEmployeeManualID);
     }
