@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit  } from '@angular/core';
-import { FormGroup,  FormBuilder,  Validators, NgForm } from '@angular/forms';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { EmployeeInformation } from 'src/app/apps/Models/EmployeeInformation';
 
@@ -8,14 +8,14 @@ import { EmployeeInformation } from 'src/app/apps/Models/EmployeeInformation';
   templateUrl: './save-employee-info.component.html',
   styleUrls: ['./save-employee-info.component.scss']
 })
-export class SaveEmployeeInfoComponent implements OnInit { 
+export class SaveEmployeeInfoComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.validateForm();
   }
 
   ngOnInit() {
- 
+
   }
 
   objTempEmp: EmployeeInformation;
@@ -57,13 +57,38 @@ export class SaveEmployeeInfoComponent implements OnInit {
   public CTo: string;
   public CCertificate: string;
 
-  public rows: Array<{InstituteName: string, PassedExam: string, Division: string, Year: string, Marks: string, Board: string, Subject: string}> = [];
-  public rowsCourses: Array<{CCourseName: string, CConductedBy: string, CFrom: string, CTo: string, CCertificate: string}> = [];
+  public TCourseName: string;
+  public TConductedBy: string;
+  public TFrom: string;
+  public TTo: string;
+  public TCertificate: string;
+  public TSkill: string;
 
-    //Save employee details
-    AddEmployee(addEmp: NgForm) {
+  public EOrganization: string;
+  public EAddress: string;
+  public EPhone: string;
+  public EDesignation: string;
+  public EFrom: string;
+  public ETo: string;
+  public ELeaveReason: string;
+  public ELastSalaryDrawn: string;
 
-      if (this.angForm.valid) {
+  public DNameofDependance: string;
+  public DRelationShip: string;
+  public dDateOfBirth2: string;
+  public DAge: string;
+  public DGender: string;
+
+  public rows: Array<{ InstituteName: string, PassedExam: string, Division: string, Year: string, Marks: string, Board: string, Subject: string }> = [];
+  public rowsCourses: Array<{ CCourseName: string, CConductedBy: string, CFrom: string, CTo: string, CCertificate: string }> = [];
+  public rowsTrainings: Array<{ TCourseName: string, TConductedBy: string, TFrom: string, TTo: string, TCertificate: string, TSkill: string }> = [];
+  public rowsExperiences: Array<{ EOrganization: string, EAddress: string, EPhone: string, EDesignation: string, EFrom: string, ETo: string, ELeaveReason: string, ELastSalaryDrawn: string }> = [];
+  public rowsFamilies: Array<{ DNameofDependance: string, DRelationShip: string, dDateOfBirth2: string, DAge: string, DGender: string }> = [];
+
+  //Save employee details
+  AddEmployee(addEmp: NgForm) {
+
+    if (this.angForm.valid) {
 
       /*this.objTempEmp = new EmployeeInformation();
       this.objTempEmp.vEmployeeManualID = this.vEmployeeManualID;
@@ -85,75 +110,109 @@ export class SaveEmployeeInfoComponent implements OnInit {
       this.objTempEmp.ValidTill = this.ValidTill;
       this.objTempEmp.Ref1 = this.Ref1;
       this.objTempEmp.Ref2 = this.Ref2;*/
-       
-      } else {
-        Object.keys(this.angForm.controls).forEach(field => {
-          const control = this.angForm.get(field);
-          control.markAsTouched({ onlySelf: true });
-          });
-      }
-    }
 
-    validateForm() {
-      this.angForm = this.fb.group({
-        vEmployeeManualID: ['', Validators.required ], 
-        vFirstName: ['', Validators.required ],
-        vLastName: ['', Validators.required ],
-        vMaritalStatusID: ['', Validators.required ],
-        vGenderID: ['', Validators.required ],
-        dDateOfBirth: ['', Validators.required ],
-        vNationalityID: ['', Validators.required ],
-        EMP_Status: ['', Validators.required ],
-        vBloodGroupID: ['', Validators.required ],
-        vIdentificationMark: ['', Validators.required ],
-        vReligionID: ['', Validators.required ],
-        Email: ['', Validators.required ],
-        Mobile: ['', Validators.required ],
-        NationalId: ['', Validators.required ],
-        PassportNo: ['', Validators.required ],
-        PlaceOfIssue: ['', Validators.required ],
-        ValidTill: ['', Validators.required ],
-        Ref1: ['', Validators.required ],
-        Ref2: ['', Validators.required ],
-
-        vCompanyDivisionName: [''],
-        vDepartmentName: [''],
-        vSectionName: [''],
-        vEmployeeCardNo: [''],
-        ManagementSectionName: [''],
-        vDesignationName: [''],
-        vEmployeeTypeID: [''],
-        //EMP_Status: [''],
-        PayType: [''],
-        Bank: [''],
-        AccNo: [''],
-        Tin: [''],
-        //
-        ResignDate: [''],
-        ResingReason: [''],
-        vShiftID: [''],
-        WeeklyOffDayID: [''],
-        LeaveCategory: [''],
-        dApplicationDate: [''],
-        dInterviewDate: [''],
-        dJoiningDate: [''],
-        dConfirmDate: ['']
+    } else {
+      Object.keys(this.angForm.controls).forEach(field => {
+        const control = this.angForm.get(field);
+        control.markAsTouched({ onlySelf: true });
       });
     }
+  }
 
-    //Validate on button click
-    buttonClicked() {
-      //this.validateForm();
-      console.log(this.angForm.value);
-      //alert("Button click worked and id is " + this.vEmployeeManualID);
-    }
+  validateForm() {
+    this.angForm = this.fb.group({
+      vEmployeeManualID: ['', Validators.required],
+      vFirstName: ['', Validators.required],
+      vLastName: ['', Validators.required],
+      vMaritalStatusID: ['', Validators.required],
+      vGenderID: ['', Validators.required],
+      dDateOfBirth: ['', Validators.required],
+      vNationalityID: ['', Validators.required],
+      EMP_Status: ['', Validators.required],
+      vBloodGroupID: ['', Validators.required],
+      vIdentificationMark: ['', Validators.required],
+      vReligionID: ['', Validators.required],
+      Email: ['', Validators.required],
+      Mobile: ['', Validators.required],
+      NationalId: ['', Validators.required],
+      PassportNo: ['', Validators.required],
+      PlaceOfIssue: ['', Validators.required],
+      ValidTill: ['', Validators.required],
+      Ref1: ['', Validators.required],
+      Ref2: ['', Validators.required],
 
-    //Add subjects
-    addSubjects() {
-      this.rows.push({ InstituteName: this.InstituteName, PassedExam: this.PassedExam, Division: this.Division, Year: this.Year, Marks: this.Marks, Board: this.Board, Subject: this.Subject });
-    }
+      vCompanyDivisionName: [''],
+      vDepartmentName: [''],
+      vSectionName: [''],
+      vEmployeeCardNo: [''],
+      ManagementSectionName: [''],
+      vDesignationName: [''],
+      vEmployeeTypeID: [''],
+      //EMP_Status: [''],
+      PayType: [''],
+      Bank: [''],
+      AccNo: [''],
+      Tin: [''],
+      //
+      ResignDate: [''],
+      ResingReason: [''],
+      vShiftID: [''],
+      WeeklyOffDayID: [''],
+      LeaveCategory: [''],
+      dApplicationDate: [''],
+      dInterviewDate: [''],
+      dJoiningDate: [''],
+      dConfirmDate: [''],
 
-    addShortCourses() {
-      this.rowsCourses.push({ CCourseName: this.CCourseName, CConductedBy: this.CConductedBy, CFrom: this.CFrom, CTo: this.CTo, CCertificate: this.CCertificate });
-    }
+      PAddress: [''],
+      PVillage: [''],
+      PPo: [''],
+      PPs: [''],
+      PCity: [''],
+      PDistrict: [''],
+      PPhone: [''],
+      PPin: [''],
+      PFax: [''],
+      PContact: [''],
+
+      PrAddress: [''],
+      PrVillage: [''],
+      PrPo: [''],
+      PrPs: [''],
+      PrCity: [''],
+      PrDistrict: [''],
+      PrPhone: [''],
+      PrPin: [''],
+      PrFax: [''],
+      PrContact: ['']
+    });
+  }
+
+  //Validate on button click
+  buttonClicked() {
+    //this.validateForm();
+    console.log(this.angForm.value);
+    //alert("Button click worked and id is " + this.vEmployeeManualID);
+  }
+
+  //Add subjects
+  addSubjects() {
+    this.rows.push({ InstituteName: this.InstituteName, PassedExam: this.PassedExam, Division: this.Division, Year: this.Year, Marks: this.Marks, Board: this.Board, Subject: this.Subject });
+  }
+
+  addShortCourses() {
+    this.rowsCourses.push({ CCourseName: this.CCourseName, CConductedBy: this.CConductedBy, CFrom: this.CFrom, CTo: this.CTo, CCertificate: this.CCertificate });
+  }
+
+  addTrainings() {
+    this.rowsTrainings.push({ TCourseName: this.TCourseName, TConductedBy: this.TConductedBy, TFrom: this.TFrom, TTo: this.TTo, TCertificate: this.TCertificate, TSkill: this.TSkill });
+  }
+
+  addExperiences() {
+    this.rowsExperiences.push({ EOrganization: this.EOrganization, EAddress: this.EAddress, EPhone: this.EPhone, EDesignation: this.EDesignation, EFrom: this.EFrom, ETo: this.ETo, ELeaveReason: this.ELeaveReason, ELastSalaryDrawn: this.ELastSalaryDrawn });
+  }
+
+  addFamilies() {
+    this.rowsFamilies.push({ DNameofDependance: this.DNameofDependance, DRelationShip: this.DRelationShip, dDateOfBirth2: this.dDateOfBirth2, DAge: this.DAge, DGender: this.DGender });
+  }
 }
