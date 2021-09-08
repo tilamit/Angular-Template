@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from "@angular/common/http";
 
 
 @Injectable()
 export class UserService {
+    Url: string;
+
     constructor(private http: HttpClient) {
     }
 
@@ -14,4 +16,15 @@ export class UserService {
 
         return this.http.get('https://mocki.io/v1/d4867d8b-b5d5-4a48-a4ab-79131b5809b8', { headers }); 
     }
+
+  GetEmpLoanDetails() {
+    debugger;
+
+    this.Url = 'http://localhost:53743/api/values/';
+    var a = this.Url + 'GetTotalEmp';
+
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this.http.get<any>(a);
+  }
 }
