@@ -21,6 +21,7 @@ import { UserService } from 'src/app/service/UserService';
 import { HttpClientModule} from '@angular/common/http';
 import { TabComponent } from './tabs/tab.component';
 import { SaveEmployeeInfoComponent } from './save-employee-info/save-employee-info.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [ 
@@ -34,7 +35,8 @@ import { SaveEmployeeInfoComponent } from './save-employee-info/save-employee-in
     SpinnerComponent,
     ContentAnimateDirective,
     TabComponent,
-    SaveEmployeeInfoComponent
+    SaveEmployeeInfoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

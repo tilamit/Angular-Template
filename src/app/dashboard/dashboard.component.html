@@ -1,5 +1,5 @@
 <h2>Hello World!</h2>
-<div class="row" id="proBanner">
+<!-- <div class="row" id="proBanner">
   <div class="col-12">
     <span class="align-items-center purchase-popup">
       <p>Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more!</p>
@@ -7,7 +7,7 @@
       <i class="mdi mdi-close"  (click)="toggleProBanner($event)"  id="bannerClose"></i>
     </span>
   </div>
-</div>
+</div> -->
 <div class="page-header">
   <h3 class="page-title">
     <span class="page-title-icon bg-gradient-primary text-white mr-2">
@@ -29,11 +29,11 @@
     <div class="card bg-gradient-danger card-img-holder text-white">
       <div class="card-body">
         <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
-        <h4 class="font-weight-normal mb-3">Weekly Sales
+        <h4 class="font-weight-normal mb-3">Total Employee
           <i class="mdi mdi-chart-line mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">$ 15,0000</h2>
-        <h6 class="card-text">Increased by 60%</h6>
+        <h2 class="mb-5">{{ ratio[1].TOTAL + ratio[0].TOTAL  }}</h2>
+        <h6 class="card-text"></h6>
       </div>
     </div>
   </div>
@@ -41,11 +41,11 @@
     <div class="card bg-gradient-info card-img-holder text-white">
       <div class="card-body">
         <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>                  
-        <h4 class="font-weight-normal mb-3">Weekly Orders
+        <h4 class="font-weight-normal mb-3">Employee Ratio
           <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">45,6334</h2>
-        <h6 class="card-text">Decreased by 10%</h6>
+        <h2 class="mb-5">{{ ratio[1].SEX }} {{ ratio[1].TOTAL  }} | {{ ratio[0].SEX }} {{ ratio[0].TOTAL  }}</h2>
+        <h6 class="card-text">Female {{ (ratio[1].TOTAL / (ratio[1].TOTAL + ratio[0].TOTAL)) * 100 | number:'1.2-2' }} | Male {{ (ratio[0].TOTAL / (ratio[1].TOTAL + ratio[0].TOTAL)) * 100 | number:'1.2-2' }} </h6>
       </div>
     </div>
   </div>
