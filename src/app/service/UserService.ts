@@ -27,4 +27,15 @@ export class UserService {
 
     return this.http.get<any>(a);
   }
+
+  GetLastFour() {
+    debugger;
+
+    this.Url = 'http://localhost:53743/api/values/';
+    var a = this.Url + 'GetLastFour';
+
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this.http.get<any>(a);
+  }
 }
