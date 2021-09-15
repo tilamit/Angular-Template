@@ -152,7 +152,7 @@ export class EmployeeInformation {
   DNoOfDependance: number;
   DNameofDependance: string;
   DRelationShip: string;
-  DDateOfBirth: string;
+  DDateOfBirth: Date;
   DAge: string;
   DGender: string;
    // #endregion

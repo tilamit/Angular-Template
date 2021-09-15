@@ -22,6 +22,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { TabComponent } from './tabs/tab.component';
 import { SaveEmployeeInfoComponent } from './save-employee-info/save-employee-info.component';
 import { LoginComponent } from './login/login.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [ 
@@ -49,7 +50,7 @@ import { LoginComponent } from './login/login.component';
     Ng2CompleterModule,
     HttpClientModule 
   ],
-  providers: [ThemeService, UserService],
+  providers: [ThemeService, DatePipe, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

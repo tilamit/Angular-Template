@@ -846,7 +846,11 @@
                             <tr>
                               <th>Institute</th>
                               <th>Degree</th>
+                              <th>Division</th>
                               <th>Year</th>
+                              <th>Marks</th>
+                              <th>Board</th>
+                              <th>Subject</th>
                             </tr>
                             <tr *ngFor="let row of rows">
                               <td>{{ row.InstituteName }}</td>
@@ -1036,11 +1040,12 @@
                               <th>Skill Type</th>
                             </tr>
                             <tr *ngFor="let row of rowsTrainings">
-                              <td>{{ row.CCourseName }}</td>
-                              <td>{{ row.CConductedBy }}</td>
-                              <td>{{ row.CFrom }}</td>
-                              <td>{{ row.CTo }}</td>
-                              <td>{{ row.CCertificate }}</td>
+                              <td>{{ row.TCourseName }}</td>
+                              <td>{{ row.TConductedBy }}</td>
+                              <td>{{ row.TFrom }}</td>
+                              <td>{{ row.TTo }}</td>
+                              <td>{{ row.TCertificate }}</td>
+                              <td>{{ row.TSkill }}</td>
                             </tr>
                           </table>
                         </div>
@@ -1243,10 +1248,10 @@
                               <th>Age</th>
                               <th>Gender</th>
                             </tr>
-                            <tr *ngFor="let row of rowsExperiences">
+                            <tr *ngFor="let row of rowsFamilies">
                               <td>{{ row.DNameofDependance }}</td>
                               <td>{{ row.DRelationShip }}</td>
-                              <td>{{ row.dDateOfBirth2 }}</td>
+                              <td>{{ row.DDateOfBirth }}</td>
                               <td>{{ row.DAge }}</td>
                               <td>{{ row.DGender }}</td>
                             </tr>

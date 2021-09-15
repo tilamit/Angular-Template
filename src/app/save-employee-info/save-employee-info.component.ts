@@ -2,6 +2,8 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { EmployeeInformation } from 'src/app/apps/Models/EmployeeInformation';
+import { UserService } from '../service/UserService';
+import { EmpInfo } from '../apps/Models/EmpInfo';
 
 @Component({
   selector: 'app-save-employee-info',
@@ -10,7 +12,7 @@ import { EmployeeInformation } from 'src/app/apps/Models/EmployeeInformation';
 })
 export class SaveEmployeeInfoComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dataservice: UserService, private datePipe: DatePipe) {
     this.validateForm();
   }
 
@@ -79,11 +81,19 @@ export class SaveEmployeeInfoComponent implements OnInit {
   public DAge: string;
   public DGender: string;
 
-  public rows: Array<{ InstituteName: string, PassedExam: string, Division: string, Year: string, Marks: string, Board: string, Subject: string }> = [];
-  public rowsCourses: Array<{ CCourseName: string, CConductedBy: string, CFrom: string, CTo: string, CCertificate: string }> = [];
-  public rowsTrainings: Array<{ TCourseName: string, TConductedBy: string, TFrom: string, TTo: string, TCertificate: string, TSkill: string }> = [];
-  public rowsExperiences: Array<{ EOrganization: string, EAddress: string, EPhone: string, EDesignation: string, EFrom: string, ETo: string, ELeaveReason: string, ELastSalaryDrawn: string }> = [];
-  public rowsFamilies: Array<{ DNameofDependance: string, DRelationShip: string, dDateOfBirth2: string, DAge: string, DGender: string }> = [];
+  public val1: EmployeeInformation[];
+  public val2: EmployeeInformation[];
+  public val3: EmployeeInformation[];
+  public val4: EmployeeInformation[];
+  public val5: EmployeeInformation[];
+
+  public rows: EmployeeInformation[] = [];
+  public rowsCourses: EmployeeInformation[] = [];
+  public rowsTrainings: EmployeeInformation[] = [];
+  public rowsExperiences: EmployeeInformation[] = [];
+  public rowsFamilies: EmployeeInformation[] = [];
+
+  public EmpInfo : EmpInfo;
 
   //Save employee details
   AddEmployee(addEmp: NgForm) {
@@ -192,27 +202,88 @@ export class SaveEmployeeInfoComponent implements OnInit {
   buttonClicked() {
     //this.validateForm();
     console.log(this.angForm.value);
-    //alert("Button click worked and id is " + this.vEmployeeManualID);
-  }
+
+    let obj = {} as EmpInfo;
+    obj.BO = this.angForm.value;
+    obj.lstEducation = this.rows; 
+    obj.ShortCourse = this.rowsCourses; 
+    obj.Training = this.rowsTrainings; 
+    obj.Experience = this.rowsExperiences; 
+    obj.Family = this.rowsFamilies;
+
+    this.dataservice.AddEmployee(obj).subscribe(res => {
+      alert("Leave added successfully");
+    })
+  } 
 
   //Add subjects
   addSubjects() {
-    this.rows.push({ InstituteName: this.InstituteName, PassedExam: this.PassedExam, Division: this.Division, Year: this.Year, Marks: this.Marks, Board: this.Board, Subject: this.Subject });
+    let obj = {} as EmployeeInformation;
+
+    obj.InstituteName = this.InstituteName;
+    obj.PassedExam = this.PassedExam;
+    obj.Division = this.Division;
+    obj.Year = this.Year;
+    obj.Marks = this.Marks;
+    obj.Board = this.Board;
+    obj.Subject = this.Subject;
+
+    this.rows.push(obj);
   }
 
   addShortCourses() {
-    this.rowsCourses.push({ CCourseName: this.CCourseName, CConductedBy: this.CConductedBy, CFrom: this.CFrom, CTo: this.CTo, CCertificate: this.CCertificate });
+    let obj = {} as EmployeeInformation;
+
+    obj.CCourseName = this.CCourseName;
+    obj.CConductedBy = this.CConductedBy;
+    obj.CFrom = new Date(this.CFrom)
+    obj.CTo = new Date(this.CTo);
+    obj.CCertificate = this.CCertificate;
+
+    this.rowsCourses.push(obj);
+    //this.rowsCourses.push({ CCourseName: this.CCourseName, CConductedBy: this.CConductedBy, CFrom: this.CFrom, CTo: this.CTo, CCertificate: this.CCertificate });
   }
 
   addTrainings() {
-    this.rowsTrainings.push({ TCourseName: this.TCourseName, TConductedBy: this.TConductedBy, TFrom: this.TFrom, TTo: this.TTo, TCertificate: this.TCertificate, TSkill: this.TSkill });
+    let obj = {} as EmployeeInformation;
+
+    obj.TCourseName = this.TCourseName;
+    obj.TConductedBy = this.TConductedBy;
+    obj.TFrom = new Date(this.TFrom);
+    obj.TTo = new Date(this.TTo);
+    obj.TCertificate = this.TCertificate;
+    obj.TSkill = this.TSkill;
+
+    this.rowsTrainings.push(obj);
+    //this.rowsTrainings.push({ TCourseName: this.TCourseName, TConductedBy: this.TConductedBy, TFrom: this.TFrom, TTo: this.TTo, TCertificate: this.TCertificate, TSkill: this.TSkill });
   }
 
   addExperiences() {
-    this.rowsExperiences.push({ EOrganization: this.EOrganization, EAddress: this.EAddress, EPhone: this.EPhone, EDesignation: this.EDesignation, EFrom: this.EFrom, ETo: this.ETo, ELeaveReason: this.ELeaveReason, ELastSalaryDrawn: this.ELastSalaryDrawn });
+    let obj = {} as EmployeeInformation;
+
+    obj.EOrganization = this.EOrganization;
+    obj.EAddress = this.EAddress;
+    obj.EPhone = this.EPhone;
+    obj.EDesignation = this.EDesignation;
+    obj.EFrom = new Date(this.EFrom);
+    obj.ETo = new Date(this.ETo);
+    obj.ELeaveReason = this.ELeaveReason;
+    obj.ELastSalaryDrawn = this.ELastSalaryDrawn;
+
+    this.rowsExperiences.push(obj);
+    //this.rowsExperiences.push({ EOrganization: this.EOrganization, EAddress: this.EAddress, EPhone: this.EPhone, EDesignation: this.EDesignation, EFrom: this.EFrom, ETo: this.ETo, ELeaveReason: this.ELeaveReason, ELastSalaryDrawn: this.ELastSalaryDrawn });
   }
 
   addFamilies() {
-    this.rowsFamilies.push({ DNameofDependance: this.DNameofDependance, DRelationShip: this.DRelationShip, dDateOfBirth2: this.dDateOfBirth2, DAge: this.DAge, DGender: this.DGender });
+    let obj = {} as EmployeeInformation;
+
+    obj.DNameofDependance = this.DNameofDependance; 
+    obj.DRelationShip = this.DRelationShip; 
+    obj.DDateOfBirth = new Date(this.dDateOfBirth2); 
+    obj.DAge = this.DAge; 
+    obj.DGender = this.DGender
+
+    this.rowsFamilies.push(obj);
+    //this.rowsFamilies.push({ DNameofDependance: this.DNameofDependance, DRelationShip: this.DRelationShip, dDateOfBirth2: this.dDateOfBirth2, DAge: this.DAge, DGender: this.DGender });
   }
 }
