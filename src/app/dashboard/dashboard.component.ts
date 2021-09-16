@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
         'rgba(240, 317, 220, 1)',
         'rgba(140, 317, 222, 1)'
       ]
-    }
+    } 
   ];
 
   //Get Total Employee

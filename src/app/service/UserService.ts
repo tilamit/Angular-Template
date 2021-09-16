@@ -42,7 +42,7 @@ export class UserService {
     return this.http.get<any>(a);
   }
 
-    //Add Leave
+    //Add employee
     AddEmployee(aEmpInfo: EmpInfo) {
       var body = { aEmpInfo }
   

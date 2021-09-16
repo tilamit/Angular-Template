@@ -23,6 +23,8 @@ import { TabComponent } from './tabs/tab.component';
 import { SaveEmployeeInfoComponent } from './save-employee-info/save-employee-info.component';
 import { LoginComponent } from './login/login.component';
 import { DatePipe } from '@angular/common';
+import { MainComponent } from './main/main.component';
+import { LoginService } from './service/LoginService';
 
 @NgModule({
   declarations: [ 
@@ -37,7 +39,8 @@ import { DatePipe } from '@angular/common';
     ContentAnimateDirective,
     TabComponent,
     SaveEmployeeInfoComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { DatePipe } from '@angular/common';
     Ng2CompleterModule,
     HttpClientModule 
   ],
-  providers: [ThemeService, DatePipe, UserService],
+  providers: [ThemeService, DatePipe, UserService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
+import { NavigationEnd, NavigationStart, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
+import { LoginService } from '../service/LoginService';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss']
 })
-export class AppComponent implements OnInit{
+export class MainComponent implements OnInit{
   title = 'demo1';
 
   showSidebar: boolean = true;
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit{
   showFooter: boolean = true;
   isLoading: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dataservice: LoginService) {
     
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
     router.events.forEach((event) => { 
@@ -52,10 +53,10 @@ export class AppComponent implements OnInit{
     });
   }
 
-
-
   ngOnInit() {
-    // Scroll to top after route change
+    this.dataservice.isLoggedIn();
+
+    //Scroll to top after route change
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
           return;
