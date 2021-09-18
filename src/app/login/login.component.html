@@ -11,13 +11,13 @@
                     <img src="assets/images/kds-logo.png" alt="logo">
                   </div>
                   <h6 class="font-weight-light">Sign in to continue.</h6>
-                  <form class="pt-3" [formGroup]="angForm" #addEmp='ngForm' (ngSubmit)="AddEmployee(addEmp)">
+                  <form class="pt-3" [formGroup]="angForm">
                     <div class="form-group">
-                      <input type="email" formcontrolname="UserID" class="form-control form-control-lg" id="exampleInputEmail1"
+                      <input type="email" formControlName="UserID" class="form-control form-control-lg" id="exampleInputEmail1"
                         placeholder="Username">
                     </div>
                     <div class="form-group">
-                      <input type="password" formcontrolname="Password" class="form-control form-control-lg" id="exampleInputPassword1"
+                      <input type="password" formControlName="Password" class="form-control form-control-lg" id="exampleInputPassword1"
                         placeholder="Password">
                     </div>
                     <div class="mt-3">

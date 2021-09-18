@@ -17,7 +17,9 @@ export class SaveEmployeeInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.GetDeptList();
+    this.GetSectionList();
+    this.GetDesignationList();
   }
 
   objTempEmp: EmployeeInformation;
@@ -93,7 +95,16 @@ export class SaveEmployeeInfoComponent implements OnInit {
   public rowsExperiences: EmployeeInformation[] = [];
   public rowsFamilies: EmployeeInformation[] = [];
 
-  public EmpInfo : EmpInfo;
+  public EmpInfo: EmpInfo;
+  public dept: any;
+  public section: any;
+  public sectionMng: any;
+  public designation: any;
+
+  seletedValueDept = '0';
+  seletedValueSection = '0';
+  seletedValueSectionMng = '0';
+  seletedValueDesc = '0';
 
   //Save employee details
   AddEmployee(addEmp: NgForm) {
@@ -164,6 +175,13 @@ export class SaveEmployeeInfoComponent implements OnInit {
       AccNo: [''],
       Tin: [''],
       //
+
+      OTAllowed: [''],
+      TransportAllowed: [''],
+      Residance: [''],
+      Tax: [''],
+      Pf: [''],
+
       ResignDate: [''],
       ResingReason: [''],
       vShiftID: [''],
@@ -198,23 +216,58 @@ export class SaveEmployeeInfoComponent implements OnInit {
     });
   }
 
+  GetDeptList() {
+    debugger;
+    this.dataservice.GetDeptList().subscribe(result => {
+      this.dept = JSON.parse(result);
+
+
+      console.log(this.dept);
+    }, error => console.error(error));
+  }
+
+  GetSectionList() {
+    debugger;
+    this.dataservice.GetSectionList().subscribe(result => {
+      this.section = JSON.parse(result);
+      this.sectionMng = JSON.parse(result);
+
+
+      console.log(this.section);
+    }, error => console.error(error));
+  }
+
+  GetDesignationList() {
+    debugger;
+    this.dataservice.GetDesignationList().subscribe(result => {
+      this.designation = JSON.parse(result);
+
+
+      console.log(this.designation);
+    }, error => console.error(error));
+  }
+
   //Validate on button click
   buttonClicked() {
     //this.validateForm();
-    console.log(this.angForm.value);
+    if ((this.angForm.controls['vEmployeeManualID'].value == "") || (this.angForm.controls['vFirstName'].value == "") || (this.angForm.controls['vLastName'].value == "") || (this.angForm.controls['dDateOfBirth'].value == "")) {
+      alert("Please! Fill up all required fields.");
+    } else {
+      console.log(this.angForm.value);
 
-    let obj = {} as EmpInfo;
-    obj.BO = this.angForm.value;
-    obj.lstEducation = this.rows; 
-    obj.ShortCourse = this.rowsCourses; 
-    obj.Training = this.rowsTrainings; 
-    obj.Experience = this.rowsExperiences; 
-    obj.Family = this.rowsFamilies;
+      let obj = {} as EmpInfo;
+      obj.BO = this.angForm.value;
+      obj.lstEducation = this.rows;
+      obj.ShortCourse = this.rowsCourses; 
+      obj.Training = this.rowsTrainings;
+      obj.Experience = this.rowsExperiences;
+      obj.Family = this.rowsFamilies;
 
-    this.dataservice.AddEmployee(obj).subscribe(res => {
-      alert("Leave added successfully");
-    })
-  } 
+      this.dataservice.AddEmployee(obj).subscribe(res => {
+        alert("Employee info added successfully!");
+      })
+    }
+  }
 
   //Add subjects
   addSubjects() {
@@ -231,6 +284,10 @@ export class SaveEmployeeInfoComponent implements OnInit {
     this.rows.push(obj);
   }
 
+  deleteRowEducation(id) {
+    this.rows.splice(id);
+  }
+
   addShortCourses() {
     let obj = {} as EmployeeInformation;
 
@@ -242,6 +299,10 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
     this.rowsCourses.push(obj);
     //this.rowsCourses.push({ CCourseName: this.CCourseName, CConductedBy: this.CConductedBy, CFrom: this.CFrom, CTo: this.CTo, CCertificate: this.CCertificate });
+  }
+
+  deleteRowCourse(id) {
+    this.rowsCourses.splice(id);
   }
 
   addTrainings() {
@@ -256,6 +317,10 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
     this.rowsTrainings.push(obj);
     //this.rowsTrainings.push({ TCourseName: this.TCourseName, TConductedBy: this.TConductedBy, TFrom: this.TFrom, TTo: this.TTo, TCertificate: this.TCertificate, TSkill: this.TSkill });
+  }
+
+  deleteRowTraining(id) {
+    this.rowsTrainings.splice(id);
   }
 
   addExperiences() {
@@ -274,16 +339,24 @@ export class SaveEmployeeInfoComponent implements OnInit {
     //this.rowsExperiences.push({ EOrganization: this.EOrganization, EAddress: this.EAddress, EPhone: this.EPhone, EDesignation: this.EDesignation, EFrom: this.EFrom, ETo: this.ETo, ELeaveReason: this.ELeaveReason, ELastSalaryDrawn: this.ELastSalaryDrawn });
   }
 
+  deleteRowExperience(id) {
+    this.rowsExperiences.splice(id);
+  }
+
   addFamilies() {
     let obj = {} as EmployeeInformation;
 
-    obj.DNameofDependance = this.DNameofDependance; 
-    obj.DRelationShip = this.DRelationShip; 
-    obj.DDateOfBirth = new Date(this.dDateOfBirth2); 
-    obj.DAge = this.DAge; 
+    obj.DNameofDependance = this.DNameofDependance;
+    obj.DRelationShip = this.DRelationShip;
+    obj.DDateOfBirth = new Date(this.dDateOfBirth2);
+    obj.DAge = this.DAge;
     obj.DGender = this.DGender
 
     this.rowsFamilies.push(obj);
     //this.rowsFamilies.push({ DNameofDependance: this.DNameofDependance, DRelationShip: this.DRelationShip, dDateOfBirth2: this.dDateOfBirth2, DAge: this.DAge, DGender: this.DGender });
+  }
+
+  deleteRowFamily(id) {
+    this.rowsFamilies.splice(id);
   }
 }

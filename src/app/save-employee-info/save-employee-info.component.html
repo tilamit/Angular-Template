@@ -22,7 +22,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Employee ID</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="vEmployeeManualID" formControlName="vEmployeeManualID" />
+                                  <input type="text" class="form-control" formControlName="vEmployeeManualID" />
                                 
                                   <div style="margin: 20px 0;" *ngIf="!this.angForm.controls['vEmployeeManualID'].valid && this.angForm.controls['vEmployeeManualID'].touched;" class="alert alert-danger">
                                       <div *ngIf="angForm.controls['vEmployeeManualID'].errors.required">
@@ -36,7 +36,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">First Name</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="vFirstName" formControlName="vFirstName" />
+                                  <input type="text" class="form-control" formControlName="vFirstName" />
 
                                   <div style="margin: 20px 0;" *ngIf="angForm.controls['vFirstName'].invalid && (angForm.controls['vFirstName'].dirty || angForm.controls['vFirstName'].touched)" class="alert alert-danger">
                                       <div *ngIf="angForm.controls['vFirstName'].errors.required">
@@ -50,13 +50,13 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Last Name</label>
                                 <div class="col-sm-9">
-                                  <input type="text" [(ngModel)]="vLastName" class="form-control" formControlName="vLastName" />
+                                  <input type="text" class="form-control" formControlName="vLastName" />
 
-                                  <div style="margin: 20px 0;" *ngIf="angForm.controls['vLastName'].invalid && (angForm.controls['vLastName'].dirty || angForm.controls['vLastName'].touched)" class="alert alert-danger">
+                                  <!-- <div style="margin: 20px 0;" *ngIf="angForm.controls['vLastName'].invalid && (angForm.controls['vLastName'].dirty || angForm.controls['vLastName'].touched)" class="alert alert-danger">
                                       <div *ngIf="angForm.controls['vLastName'].errors.required">
                                           Last name required!
                                       </div>
-                                  </div>    
+                                  </div>     -->
                                 </div>
                               </div>
                             </div>
@@ -86,7 +86,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Date of Birth</label>
                                 <div class="col-sm-9">
-                                  <input class="form-control" [(ngModel)]="dDateOfBirth" formControlName="dDateOfBirth" placeholder="dd/mm/yyyy" />
+                                  <input class="form-control" formControlName="dDateOfBirth" placeholder="dd/mm/yyyy" />
 
                                   <div style="margin: 20px 0;" *ngIf="angForm.controls['dDateOfBirth'].invalid && (angForm.controls['dDateOfBirth'].dirty || angForm.controls['dDateOfBirth'].touched)" class="alert alert-danger">
                                     <div *ngIf="angForm.controls['dDateOfBirth'].errors.required">
@@ -277,9 +277,9 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Department</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vDepartmentName">
-                                    <option value="D0016">MARKETING & SALES</option>
-                                    <option value="D0029">AUTOMATION & SYSTEMS</option>
+                                  <select class="form-control" formControlName="vDepartmentName" [(ngModel)]="seletedValueDept">
+                                    <option value="0">------Select Department------</option>
+                                    <option *ngFor="let deptList of dept" value="{{ deptList.DEPT_NO }}">{{ deptList.DEPT_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
@@ -288,9 +288,9 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Section</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vSectionName"> 
-                                    <option value="D0016">MARKETING & SALES</option>
-                                    <option value="D0029">AUTOMATION & SYSTEMS</option>
+                                  <select class="form-control" formControlName="vSectionName" [(ngModel)]="seletedValueSection"> 
+                                    <option value="0">------Select Section------</option>
+                                    <option *ngFor="let sectionList of section" value="{{ sectionList.SECTION_NO }}">{{ sectionList.SECTION_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
@@ -317,25 +317,22 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Manag. Section</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="ManagementSectionName">
-                                    <option value="D0016">MARKETING & SALES</option>
-                                    <option value="D0029">AUTOMATION & SYSTEMS</option>
+                                  <select class="form-control" formControlName="ManagementSectionName" [(ngModel)]="seletedValueSectionMng">
+                                    <option value="0">------Select Section------</option>
+                                    <option *ngFor="let sectionList of sectionMng" value="{{ sectionList.SECTION_NO }}">{{ sectionList.SECTION_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
                             </div>
                           </div>
                           <div class="row">
-
-
-
                             <div class="col-md-6">
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Designation</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vDesignationName">
-                                    <option>Management Trainee</option>
-                                    <option>Software Developer</option>
+                                  <select class="form-control" formControlName="vDesignationName" [(ngModel)]="seletedValueDesc">
+                                    <option value="0">------Select Designation------</option>
+                                    <option *ngFor="let descList of designation" value="{{ descList.DES_ID }}">{{ descList.DESIGNATION_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
@@ -452,14 +449,53 @@
                                 <label class="col-sm-3 col-form-label">Leave Category</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" formControlName="LeaveCategory">
-                                    <option>Management</option>
-                                    <option>Worker</option>
+                                    <option value="L02">Management</option>
+                                    <option value="L01">Worker</option>
+                                    <option value="L03">Foreigner</option>
                                   </select>
                                 </div>
                               </div>
                             </div>
-
                           </div>
+
+                          <!--Check box selection - Starts -->
+                          <p class="card-description">
+                            OT/Allowance
+                          </p>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Over Time Allowed?</label>
+                                <div class="col-sm-2">
+                                 <input type="checkbox" formControlName="OTAllowed" />
+                                </div>
+
+                                <label class="col-sm-2 col-form-label">Transport Allowed?</label>
+                                <div class="col-sm-2">
+                                 <input type="checkbox" formControlName="TransportAllowed" />
+                                </div>
+
+                                <label class="col-sm-2 col-form-label">Residence?</label>
+                                <div class="col-sm-2">
+                                 <input type="checkbox" formControlName="Residance" />
+                                </div>
+
+                                <label class="col-sm-2 col-form-label">Tax?</label>
+                                <div class="col-sm-2">
+                                 <input type="checkbox" formControlName="Tax" />
+                                </div>
+
+                                <label class="col-sm-2 col-form-label">PF?</label>
+                                <div class="col-sm-2">
+                                 <input type="checkbox" formControlName="Pf" />
+                                </div>
+                              </div>
+                            </div>  
+                          </div>
+                          <!--Check box selection - Ends -->
+
+
+
 
                           <!-- Date  - Starts-->
                           <p class="card-description">
@@ -844,6 +880,7 @@
                         <div class="col-md-12">
                           <table class="table">
                             <tr>
+                              <th>Sl No.</th>
                               <th>Institute</th>
                               <th>Degree</th>
                               <th>Division</th>
@@ -852,7 +889,8 @@
                               <th>Board</th>
                               <th>Subject</th>
                             </tr>
-                            <tr *ngFor="let row of rows">
+                            <tr *ngFor="let row of rows; let i = index">
+                              <td>{{i + 1}}</td>
                               <td>{{ row.InstituteName }}</td>
                               <td>{{ row.PassedExam }}</td>
                               <td>{{ row.Division }}</td>
@@ -860,6 +898,7 @@
                               <td>{{ row.Marks }}</td>
                               <td>{{ row.Board }}</td>
                               <td>{{ row.Subject }}</td>
+                              <td><button id="removeEducation" class="btn btn-danger" (click)="deleteRowEducation(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
@@ -935,18 +974,21 @@
                         <div class="col-md-12">
                           <table class="table">
                             <tr>
+                              <th>Sl No.</th>
                               <th>Course Name</th>
                               <th>Conducted By</th>
                               <th>From</th>
                               <th>To</th>
                               <th>Certificate</th>
                             </tr>
-                            <tr *ngFor="let row of rowsCourses">
+                            <tr *ngFor="let row of rowsCourses; let i = index">
+                              <td>{{ i + 1 }}</td>
                               <td>{{ row.CCourseName }}</td>
                               <td>{{ row.CConductedBy }}</td>
                               <td>{{ row.CFrom }}</td>
                               <td>{{ row.CTo }}</td>
                               <td>{{ row.CCertificate }}</td>
+                              <td><button id="removeShortCourse" class="btn btn-danger" (click)="deleteRowCourse(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
@@ -1032,6 +1074,7 @@
                         <div class="col-md-12">
                           <table class="table">
                             <tr>
+                              <th>Sl No.</th>
                               <th>Course Name</th>
                               <th>Conducted By</th>
                               <th>From</th>
@@ -1039,13 +1082,15 @@
                               <th>Certificate</th>
                               <th>Skill Type</th>
                             </tr>
-                            <tr *ngFor="let row of rowsTrainings">
+                            <tr *ngFor="let row of rowsTrainings; let i = index">
+                              <td>{{ i + 1 }}</td>
                               <td>{{ row.TCourseName }}</td>
                               <td>{{ row.TConductedBy }}</td>
                               <td>{{ row.TFrom }}</td>
                               <td>{{ row.TTo }}</td>
                               <td>{{ row.TCertificate }}</td>
                               <td>{{ row.TSkill }}</td>
+                              <td><button id="removeTraining" class="btn btn-danger" (click)="deleteRowTraining(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
@@ -1149,6 +1194,7 @@
                         <div class="col-md-12">
                           <table class="table">
                             <tr>
+                              <th>Sl No.</th>
                               <th>Organization</th>
                               <th>Address</th>
                               <th>Tel No.</th>
@@ -1158,7 +1204,8 @@
                               <th>Leave Reason</th>
                               <th>Last Salary Withdrawn</th>
                             </tr>
-                            <tr *ngFor="let row of rowsExperiences">
+                            <tr *ngFor="let row of rowsExperiences; let i = index">
+                              <td>{{ i + 1 }}</td>
                               <td>{{ row.EOrganization }}</td>
                               <td>{{ row.EAddress }}</td>
                               <td>{{ row.EPhone }}</td>
@@ -1167,6 +1214,7 @@
                               <td>{{ row.ETo }}</td>
                               <td>{{ row.ELeaveReason }}</td>
                               <td>{{ row.ELastSalaryDrawn }}</td>
+                              <td><button id="removeExperience" class="btn btn-danger" (click)="deleteRowExperience(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
@@ -1242,18 +1290,21 @@
                         <div class="col-md-12">
                           <table class="table">
                             <tr>
+                              <th>Sl No.</th>
                               <th>Name of Dependance</th>
                               <th>Relationship</th>
                               <th>Date of Birth</th>
                               <th>Age</th>
                               <th>Gender</th>
                             </tr>
-                            <tr *ngFor="let row of rowsFamilies">
+                            <tr *ngFor="let row of rowsFamilies; let i = index">
+                              <td>{{ i + 1 }}</td>
                               <td>{{ row.DNameofDependance }}</td>
                               <td>{{ row.DRelationShip }}</td>
                               <td>{{ row.DDateOfBirth }}</td>
                               <td>{{ row.DAge }}</td>
                               <td>{{ row.DGender }}</td>
+                              <td><button id="removeExperience" class="btn btn-danger" (click)="deleteRowFamily(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>

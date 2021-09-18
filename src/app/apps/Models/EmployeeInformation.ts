@@ -1,5 +1,7 @@
 
 export class EmployeeInformation {
+  id: number;
+
   // #region <Employee Personal and Official> 
   EMP_Status: string;
   EmployeeAutoID: string;
