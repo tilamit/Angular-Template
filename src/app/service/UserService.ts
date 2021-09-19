@@ -75,6 +75,17 @@ export class UserService {
     return this.http.get<any>(a);
   }
 
+  GetShiftList() {
+    debugger;
+
+    this.Url = 'http://localhost:53743/api/values/';
+    var a = this.Url + 'GetShiftList';
+
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this.http.get<any>(a);
+  }
+
   //Add employee
   AddEmployee(aEmpInfo: EmpInfo) {
     var body = { aEmpInfo }

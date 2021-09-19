@@ -100,11 +100,13 @@ export class SaveEmployeeInfoComponent implements OnInit {
   public section: any;
   public sectionMng: any;
   public designation: any;
+  public shift: any;
 
   seletedValueDept = '0';
   seletedValueSection = '0';
   seletedValueSectionMng = '0';
   seletedValueDesc = '0';
+  seletedValueShift = '0';
 
   //Save employee details
   AddEmployee(addEmp: NgForm) {
@@ -244,6 +246,16 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
 
       console.log(this.designation);
+    }, error => console.error(error));
+  }
+
+  GetShiftList() {
+    debugger;
+    this.dataservice.GetShiftList().subscribe(result => {
+      this.shift = JSON.parse(result);
+
+
+      console.log(this.shift);
     }, error => console.error(error));
   }
 

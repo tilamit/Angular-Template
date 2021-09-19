@@ -262,7 +262,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Compnay Name</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vCompanyDivisionName">
+                                  <select class="form-control" formControlName="vCompanyDivisiionName">
                                     <option value="C0004">KDS PRINTING</option>
                                     <option value="C0005">IK</option>
                                     <option value="C0006">MD House</option>
@@ -301,7 +301,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Proximity Card</label>
                                 <div class="col-sm-9">
-                                  <input class="form-control" placeholder="Proximity Card" />
+                                  <input class="form-control" formControlName="vEmployeeCardNo" placeholder="Proximity Card" />
                                 </div>
                               </div>
                             </div>
@@ -309,7 +309,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Fingerprint No</label>
                                 <div class="col-sm-9">
-                                  <input class="form-control" placeholder="Fingerprint" formControlName="vEmployeeCardNo" />
+                                  <input class="form-control" placeholder="Fingerprint" />
                                 </div>
                               </div>
                             </div>
@@ -426,9 +426,9 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Shift</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vShiftID">
-                                    <option>SHIFT 1</option>
-                                    <option>SHIFT 2</option>
+                                  <select class="form-control" formControlName="vShiftID" [(ngModel)]="seletedValueShift">
+                                    <option value="0">------Select Shift------</option>
+                                    <option *ngFor="let shiftList of shift" value="{{ shiftList.SHIFT_CODE }}">{{ shiftList.SHIFT_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
