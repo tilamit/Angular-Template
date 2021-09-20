@@ -1,19 +1,43 @@
 <div class="row">
+  <div class="ng-autocomplete">
+    <div class="col-md-11 alignRight">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Search Employee</label>
+        <div class="col-sm-9">
+          <ng-autocomplete [data]="employees" [searchKeyword]="keyword" placeholder="Enter employee id"
+            (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+            historyIdentifier="employees" [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+          </ng-autocomplete>
+
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.EMPNO + ' - ' + item.ENAME"></a>
+          </ng-template>
+
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
       <form [formGroup]="angForm" #addEmp='ngForm' (ngSubmit)="AddEmployee(addEmp)">
-      <div class="card-body">
-        <ngb-tabset class="nav-fill">
-          <ngb-tab title="Personal">
-            <ng-template ngbTabContent>
-              <div class="media">
-                <div class="media-body">
-                  <p>
-                    Employee personal details
-                  </p>
-                  <div class="col-12 grid-margin">
-                    <div class="card">
-                      <div class="card-body">
+        <div class="card-body">
+          <ngb-tabset class="nav-fill">
+            <ngb-tab title="Personal">
+              <ng-template ngbTabContent>
+                <div class="media">
+                  <div class="media-body">
+                    <p>
+                      Employee personal details
+                    </p>
+                    <div class="col-12 grid-margin">
+                      <div class="card">
+                        <div class="card-body">
                           <p class="card-description">
                             Personal info
                           </p>
@@ -23,26 +47,41 @@
                                 <label class="col-sm-3 col-form-label">Employee ID</label>
                                 <div class="col-sm-9">
                                   <input type="text" class="form-control" formControlName="vEmployeeManualID" />
-                                
-                                  <div style="margin: 20px 0;" *ngIf="!this.angForm.controls['vEmployeeManualID'].valid && this.angForm.controls['vEmployeeManualID'].touched;" class="alert alert-danger">
-                                      <div *ngIf="angForm.controls['vEmployeeManualID'].errors.required">
-                                        Employee id required!
-                                      </div>
-                                  </div>    
-                              </div>                          
+
+                                  <div style="margin: 20px 0;"
+                                    *ngIf="!this.angForm.controls['vEmployeeManualID'].valid && this.angForm.controls['vEmployeeManualID'].touched;"
+                                    class="alert alert-danger">
+                                    <div *ngIf="angForm.controls['vEmployeeManualID'].errors.required">
+                                      Employee id required!
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
+
+                            <div class="col-md-6">
+                              <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Proximity Card</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" formControlName="vEmployeeCardNo"
+                                    placeholder="Proximity Card" />
+                                </div>
+                              </div>
+                            </div>
+
                             <div class="col-md-6">
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">First Name</label>
                                 <div class="col-sm-9">
                                   <input type="text" class="form-control" formControlName="vFirstName" />
 
-                                  <div style="margin: 20px 0;" *ngIf="angForm.controls['vFirstName'].invalid && (angForm.controls['vFirstName'].dirty || angForm.controls['vFirstName'].touched)" class="alert alert-danger">
-                                      <div *ngIf="angForm.controls['vFirstName'].errors.required">
-                                        First name required!
-                                      </div>
-                                  </div>    
+                                  <div style="margin: 20px 0;"
+                                    *ngIf="angForm.controls['vFirstName'].invalid && (angForm.controls['vFirstName'].dirty || angForm.controls['vFirstName'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="angForm.controls['vFirstName'].errors.required">
+                                      First name required!
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -66,7 +105,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Marital Status</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vMaritalStatusID" formControlName="vMaritalStatusID">
+                                  <select class="form-control" [(ngModel)]="vMaritalStatusID"
+                                    formControlName="vMaritalStatusID">
                                     <option>Married</option>
                                     <option>Single</option>
                                   </select>
@@ -75,7 +115,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Gender</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vGenderID" formControlName="vGenderID"> 
+                                  <select class="form-control" [(ngModel)]="vGenderID" formControlName="vGenderID">
                                     <option>Male</option>
                                     <option>Female</option>
                                   </select>
@@ -88,12 +128,14 @@
                                 <div class="col-sm-9">
                                   <input class="form-control" formControlName="dDateOfBirth" placeholder="dd/mm/yyyy" />
 
-                                  <div style="margin: 20px 0;" *ngIf="angForm.controls['dDateOfBirth'].invalid && (angForm.controls['dDateOfBirth'].dirty || angForm.controls['dDateOfBirth'].touched)" class="alert alert-danger">
+                                  <div style="margin: 20px 0;"
+                                    *ngIf="angForm.controls['dDateOfBirth'].invalid && (angForm.controls['dDateOfBirth'].dirty || angForm.controls['dDateOfBirth'].touched)"
+                                    class="alert alert-danger">
                                     <div *ngIf="angForm.controls['dDateOfBirth'].errors.required">
-                                        Date of birth required!
+                                      Date of birth required!
                                     </div>
-                                </div>   
-                                </div> 
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -102,7 +144,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Nationality</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vNationalityID" formControlName="vNationalityID">
+                                  <select class="form-control" [(ngModel)]="vNationalityID"
+                                    formControlName="vNationalityID">
                                     <option>BANGLADESHI</option>
                                     <option>SRILANKAN</option>
                                     <option>INDIAN</option>
@@ -126,7 +169,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Blood Group</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vBloodGroupID" formControlName="vBloodGroupID">
+                                  <select class="form-control" [(ngModel)]="vBloodGroupID"
+                                    formControlName="vBloodGroupID">
                                     <option value="BGI-1">A+</option>
                                     <option value="BGI-2">A-</option>
                                     <option value="BGI-3">B+</option>
@@ -144,7 +188,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Identity Mark</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="vIdentificationMark" formControlName="vIdentificationMark" />
+                                  <input type="text" class="form-control" [(ngModel)]="vIdentificationMark"
+                                    formControlName="vIdentificationMark" />
                                 </div>
                               </div>
                             </div>
@@ -166,7 +211,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Email</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="Email" formControlName="Email" /> 
+                                  <input type="text" class="form-control" [(ngModel)]="Email" formControlName="Email" />
                                 </div>
                               </div>
                             </div>
@@ -175,7 +220,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Mobile No</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="Mobile" formControlName="Mobile" />
+                                  <input type="text" class="form-control" [(ngModel)]="Mobile"
+                                    formControlName="Mobile" />
                                 </div>
                               </div>
                             </div>
@@ -183,7 +229,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">National ID</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="NationalId" formControlName="NationalId" />
+                                  <input type="text" class="form-control" [(ngModel)]="NationalId"
+                                    formControlName="NationalId" />
                                 </div>
                               </div>
                             </div>
@@ -191,7 +238,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Passport No</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="PassportNo" formControlName="PassportNo" />
+                                  <input type="text" class="form-control" [(ngModel)]="PassportNo"
+                                    formControlName="PassportNo" />
                                 </div>
                               </div>
                             </div>
@@ -199,7 +247,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Place of Issue</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="PlaceOfIssue" formControlName="PlaceOfIssue" />
+                                  <input type="text" class="form-control" [(ngModel)]="PlaceOfIssue"
+                                    formControlName="PlaceOfIssue" />
                                 </div>
                               </div>
                             </div>
@@ -207,7 +256,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Valid Till</label>
                                 <div class="col-sm-9">
-                                  <input class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="ValidTill" formControlName="ValidTill" />
+                                  <input class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="ValidTill"
+                                    formControlName="ValidTill" />
                                 </div>
                               </div>
                             </div>
@@ -230,30 +280,30 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Reference 2</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="Ref2" formControlName="Ref2"/>
+                                  <input type="text" class="form-control" [(ngModel)]="Ref2" formControlName="Ref2" />
                                 </div>
                               </div>
                             </div>
                           </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </ngb-tab> 
+              </ng-template>
+            </ngb-tab>
 
-          <!-- Employee Official - Starts -->
-          <ngb-tab title="Official">
-            <ng-template ngbTabContent>
-              <div class="media">
-                <div class="media-body">
-                  <p>
-                    Employee official details
-                  </p>
-                  <div class="col-12 grid-margin">
-                    <div class="card">
-                      <div class="card-body">
+            <!-- Employee Official - Starts -->
+            <ngb-tab title="Official">
+              <ng-template ngbTabContent>
+                <div class="media">
+                  <div class="media-body">
+                    <p>
+                      Employee official details
+                    </p>
+                    <div class="col-12 grid-margin">
+                      <div class="card">
+                        <div class="card-body">
                           <p class="card-description">
                             Company info
                           </p>
@@ -262,7 +312,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Compnay Name</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vCompanyDivisiionName">
+                                  <select class="form-control" formControlName="vCompanyDivisionName">
                                     <option value="C0004">KDS PRINTING</option>
                                     <option value="C0005">IK</option>
                                     <option value="C0006">MD House</option>
@@ -277,9 +327,11 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Department</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vDepartmentName" [(ngModel)]="seletedValueDept">
+                                  <select class="form-control" formControlName="vDepartmentName"
+                                    [(ngModel)]="seletedValueDept">
                                     <option value="0">------Select Department------</option>
-                                    <option *ngFor="let deptList of dept" value="{{ deptList.DEPT_NO }}">{{ deptList.DEPT_NAME }}</option>
+                                    <option *ngFor="let deptList of dept" value="{{ deptList.DEPT_NO }}">{{
+                                      deptList.DEPT_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
@@ -288,23 +340,17 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Section</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vSectionName" [(ngModel)]="seletedValueSection"> 
+                                  <select class="form-control" formControlName="vSectionName"
+                                    [(ngModel)]="seletedValueSection">
                                     <option value="0">------Select Section------</option>
-                                    <option *ngFor="let sectionList of section" value="{{ sectionList.SECTION_NO }}">{{ sectionList.SECTION_NAME }}</option>
+                                    <option *ngFor="let sectionList of section" value="{{ sectionList.SECTION_NO }}">{{
+                                      sectionList.SECTION_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Proximity Card</label>
-                                <div class="col-sm-9">
-                                  <input class="form-control" formControlName="vEmployeeCardNo" placeholder="Proximity Card" />
-                                </div>
-                              </div>
-                            </div>
                             <div class="col-md-6">
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Fingerprint No</label>
@@ -317,9 +363,11 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Manag. Section</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="ManagementSectionName" [(ngModel)]="seletedValueSectionMng">
+                                  <select class="form-control" formControlName="ManagementSectionName"
+                                    [(ngModel)]="seletedValueSectionMng">
                                     <option value="0">------Select Section------</option>
-                                    <option *ngFor="let sectionList of sectionMng" value="{{ sectionList.SECTION_NO }}">{{ sectionList.SECTION_NAME }}</option>
+                                    <option *ngFor="let sectionList of sectionMng" value="{{ sectionList.SECTION_NO }}">
+                                      {{ sectionList.SECTION_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
@@ -330,9 +378,11 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Designation</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vDesignationName" [(ngModel)]="seletedValueDesc">
+                                  <select class="form-control" formControlName="vDesignationName"
+                                    [(ngModel)]="seletedValueDesc">
                                     <option value="0">------Select Designation------</option>
-                                    <option *ngFor="let descList of designation" value="{{ descList.DES_ID }}">{{ descList.DESIGNATION_NAME }}</option>
+                                    <option *ngFor="let descList of designation" value="{{ descList.DES_ID }}">{{
+                                      descList.DESIGNATION_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
@@ -426,9 +476,11 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Shift</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vShiftID" [(ngModel)]="seletedValueShift">
-                                    <option value="0">------Select Shift------</option>
-                                    <option *ngFor="let shiftList of shift" value="{{ shiftList.SHIFT_CODE }}">{{ shiftList.SHIFT_NAME }}</option>
+                                  <select class="form-control" formControlName="vShiftID"
+                                    [(ngModel)]="seletedValueShift">
+                                    <option value="0">------Select Shift------</option>                        
+                                    <option *ngFor="let shiftList of shifts" value="{{ shiftList.SHIFT_CODE }}">{{
+                                        shiftList.SHIFT_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
@@ -467,30 +519,30 @@
                               <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Over Time Allowed?</label>
                                 <div class="col-sm-2">
-                                 <input type="checkbox" formControlName="OTAllowed" />
+                                  <input type="checkbox" formControlName="OTAllowed" />
                                 </div>
 
                                 <label class="col-sm-2 col-form-label">Transport Allowed?</label>
                                 <div class="col-sm-2">
-                                 <input type="checkbox" formControlName="TransportAllowed" />
+                                  <input type="checkbox" formControlName="TransportAllowed" />
                                 </div>
 
                                 <label class="col-sm-2 col-form-label">Residence?</label>
                                 <div class="col-sm-2">
-                                 <input type="checkbox" formControlName="Residance" />
+                                  <input type="checkbox" formControlName="Residance" />
                                 </div>
 
                                 <label class="col-sm-2 col-form-label">Tax?</label>
                                 <div class="col-sm-2">
-                                 <input type="checkbox" formControlName="Tax" />
+                                  <input type="checkbox" formControlName="Tax" />
                                 </div>
 
                                 <label class="col-sm-2 col-form-label">PF?</label>
                                 <div class="col-sm-2">
-                                 <input type="checkbox" formControlName="Pf" />
+                                  <input type="checkbox" formControlName="Pf" />
                                 </div>
                               </div>
-                            </div>  
+                            </div>
                           </div>
                           <!--Check box selection - Ends -->
 
@@ -507,7 +559,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Application Date</label>
                                 <div class="col-sm-6">
-                                  <input class="form-control" placeholder="dd/mm/yyyy" formControlName="dApplicationDate" />
+                                  <input class="form-control" placeholder="dd/mm/yyyy"
+                                    formControlName="dApplicationDate" />
                                 </div>
                               </div>
                             </div>
@@ -517,7 +570,8 @@
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Interview Date</label>
                                 <div class="col-sm-6">
-                                  <input class="form-control" placeholder="dd/mm/yyyy" formControlName="dInterviewDate" />
+                                  <input class="form-control" placeholder="dd/mm/yyyy"
+                                    formControlName="dInterviewDate" />
                                 </div>
                               </div>
                             </div>
@@ -546,28 +600,28 @@
                           </div>
                           <!-- Date  - Ends-->
 
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
-          <!-- Employee Official - Ends -->
-   
-          <!-- Employee address - Starts -->
-          <ngb-tab title="Address">
-            <ng-template ngbTabContent>
-              <div class="media">
-                <div class="media-body">
-                  <p>
-                    Employee address
-                  </p>
+              </ng-template>
+            </ngb-tab>
+            <!-- Employee Official - Ends -->
 
-                  <div id="parent">
-                    <div id="left" class="col-6 grid-margin">
-                      <div class="card">
-                        <div class="card-body">
+            <!-- Employee address - Starts -->
+            <ngb-tab title="Address">
+              <ng-template ngbTabContent>
+                <div class="media">
+                  <div class="media-body">
+                    <p>
+                      Employee address
+                    </p>
+
+                    <div id="parent">
+                      <div id="left" class="col-6 grid-margin">
+                        <div class="card">
+                          <div class="card-body">
                             <p class="card-description">
                               Permanent Address
                             </p>
@@ -674,15 +728,15 @@
                               </div>
 
                             </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
 
-                    <div id="right" class="col-6 grid-margin">
-                      <div class="card">
-                        <div class="card-body">
-                        
+                      <div id="right" class="col-6 grid-margin">
+                        <div class="card">
+                          <div class="card-body">
+
                             <p class="card-description">
                               Present Address
                             </p>
@@ -789,32 +843,34 @@
                                 </div>
                               </div>
                             </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+
                   </div>
-
                 </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
-          <!-- Employee address - Ends -->
+              </ng-template>
+            </ngb-tab>
+            <!-- Employee address - Ends -->
 
-          <ngb-tab title="Education">
-            <ng-template ngbTabContent>
-              <p>
-                Employee education
-              </p>
+            <ngb-tab title="Education">
+              <ng-template ngbTabContent>
+                <p>
+                  Employee education
+                </p>
 
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
                       <div class="row">
                         <div class="col-md-2">
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Institute Name</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="InstituteName" formcontrolname="InstituteName" [ngModelOptions]="{standalone: true}" placeholder="Institute Name" />
+                              <input type="text" class="form-control" [(ngModel)]="InstituteName"
+                                formcontrolname="InstituteName" [ngModelOptions]="{standalone: true}"
+                                placeholder="Institute Name" />
                             </div>
                           </div>
                         </div>
@@ -823,7 +879,9 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Passed Exam</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="PassedExam" formcontrolname="PassedExam" [ngModelOptions]="{standalone: true}" placeholder="Passed Exam" />
+                              <input type="text" class="form-control" [(ngModel)]="PassedExam"
+                                formcontrolname="PassedExam" [ngModelOptions]="{standalone: true}"
+                                placeholder="Passed Exam" />
                             </div>
                           </div>
                         </div>
@@ -832,7 +890,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Division</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="Division" formcontrolname="Division" [ngModelOptions]="{standalone: true}" placeholder="Division" />
+                              <input type="text" class="form-control" [(ngModel)]="Division" formcontrolname="Division"
+                                [ngModelOptions]="{standalone: true}" placeholder="Division" />
                             </div>
                           </div>
                         </div>
@@ -841,7 +900,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Year</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="Year" formcontrolname="Year" [ngModelOptions]="{standalone: true}" placeholder="Year" />
+                              <input type="text" class="form-control" [(ngModel)]="Year" formcontrolname="Year"
+                                [ngModelOptions]="{standalone: true}" placeholder="Year" />
                             </div>
                           </div>
                         </div>
@@ -850,7 +910,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Marks</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="Marks" formcontrolname="Marks" [ngModelOptions]="{standalone: true}" placeholder="Marks" />
+                              <input type="text" class="form-control" [(ngModel)]="Marks" formcontrolname="Marks"
+                                [ngModelOptions]="{standalone: true}" placeholder="Marks" />
                             </div>
                           </div>
                         </div>
@@ -858,7 +919,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Board</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="Board" formcontrolname="Board" [ngModelOptions]="{standalone: true}" placeholder="Board" />
+                              <input type="text" class="form-control" [(ngModel)]="Board" formcontrolname="Board"
+                                [ngModelOptions]="{standalone: true}" placeholder="Board" />
                             </div>
                           </div>
                         </div>
@@ -868,9 +930,11 @@
                             <label class="col-sm-12 col-form-label">Subject</label>
                             <div class="col-sm-12">
                               <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="Subject" formcontrolname="Subject" [ngModelOptions]="{standalone: true}" placeholder="Board" />
+                                <input type="text" class="form-control" [(ngModel)]="Subject" formcontrolname="Subject"
+                                  [ngModelOptions]="{standalone: true}" placeholder="Board" />
                                 <span class="input-group-btn">
-                                  &nbsp;&nbsp;<input type="button" (click)="addSubjects()" class="btn btn-success" value="Add" />
+                                  &nbsp;&nbsp;<input type="button" (click)="addSubjects()" class="btn btn-success"
+                                    value="Add" />
                                 </span>
                               </div>
                             </div>
@@ -898,34 +962,37 @@
                               <td>{{ row.Marks }}</td>
                               <td>{{ row.Board }}</td>
                               <td>{{ row.Subject }}</td>
-                              <td><button id="removeEducation" class="btn btn-danger" (click)="deleteRowEducation(i)">Remove</button></td>
+                              <td><button id="removeEducation" class="btn btn-danger"
+                                  (click)="deleteRowEducation(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
                       </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
+              </ng-template>
+            </ngb-tab>
 
 
-          <ngb-tab title="Short Course">
-            <ng-template ngbTabContent>
-              <h4>Short Course</h4>
-              <p>
-                Employee short course
-              </p>
+            <ngb-tab title="Short Course">
+              <ng-template ngbTabContent>
+                <h4>Short Course</h4>
+                <p>
+                  Employee short course
+                </p>
 
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
                       <div class="row">
                         <div class="col-md-3">
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Course Name</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="CCourseName" formcontrolname="CCourseName" [ngModelOptions]="{standalone: true}" placeholder="Course Name" />
+                              <input type="text" class="form-control" [(ngModel)]="CCourseName"
+                                formcontrolname="CCourseName" [ngModelOptions]="{standalone: true}"
+                                placeholder="Course Name" />
                             </div>
                           </div>
                         </div>
@@ -934,7 +1001,9 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Conducted By</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="CConductedBy" formcontrolname="CConductedBy" [ngModelOptions]="{standalone: true}" placeholder="Conducted By" />
+                              <input type="text" class="form-control" [(ngModel)]="CConductedBy"
+                                formcontrolname="CConductedBy" [ngModelOptions]="{standalone: true}"
+                                placeholder="Conducted By" />
                             </div>
                           </div>
                         </div>
@@ -943,7 +1012,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">From</label>
                             <div class="col-sm-9">
-                              <input class="form-control" [(ngModel)]="CFrom" formcontrolname="CFrom" [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
+                              <input class="form-control" [(ngModel)]="CFrom" formcontrolname="CFrom"
+                                [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
                             </div>
                           </div>
                         </div>
@@ -952,7 +1022,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">To</label>
                             <div class="col-sm-9">
-                              <input class="form-control" [(ngModel)]="CTo" formcontrolname="CTo" [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
+                              <input class="form-control" [(ngModel)]="CTo" formcontrolname="CTo"
+                                [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
                             </div>
                           </div>
                         </div>
@@ -962,9 +1033,12 @@
                             <label class="col-sm-12 col-form-label">Certificate</label>
                             <div class="col-sm-12">
                               <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="CCertificate" formcontrolname="CCertificate" [ngModelOptions]="{standalone: true}" placeholder="Certificate" />
+                                <input type="text" class="form-control" [(ngModel)]="CCertificate"
+                                  formcontrolname="CCertificate" [ngModelOptions]="{standalone: true}"
+                                  placeholder="Certificate" />
                                 <span class="input-group-btn">
-                                  &nbsp;&nbsp;<input type="button" (click)="addShortCourses()" class="btn btn-success" value="Add" />
+                                  &nbsp;&nbsp;<input type="button" (click)="addShortCourses()" class="btn btn-success"
+                                    value="Add" />
                                 </span>
                               </div>
                             </div>
@@ -988,35 +1062,38 @@
                               <td>{{ row.CFrom }}</td>
                               <td>{{ row.CTo }}</td>
                               <td>{{ row.CCertificate }}</td>
-                              <td><button id="removeShortCourse" class="btn btn-danger" (click)="deleteRowCourse(i)">Remove</button></td>
+                              <td><button id="removeShortCourse" class="btn btn-danger"
+                                  (click)="deleteRowCourse(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
 
                       </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
+              </ng-template>
+            </ngb-tab>
 
 
-          <ngb-tab title="Training">
-            <ng-template ngbTabContent>
-              <h4>Training</h4>
-              <p>
-                Employee training
-              </p>
+            <ngb-tab title="Training">
+              <ng-template ngbTabContent>
+                <h4>Training</h4>
+                <p>
+                  Employee training
+                </p>
 
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
                       <div class="row">
                         <div class="col-md-2">
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Course Name</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="TCourseName" formcontrolname="TCourseName" [ngModelOptions]="{standalone: true}" placeholder="Course Name" />
+                              <input type="text" class="form-control" [(ngModel)]="TCourseName"
+                                formcontrolname="TCourseName" [ngModelOptions]="{standalone: true}"
+                                placeholder="Course Name" />
                             </div>
                           </div>
                         </div>
@@ -1025,7 +1102,9 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Conducted By</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="TConductedBy" formcontrolname="TConductedBy" [ngModelOptions]="{standalone: true}" placeholder="Conducted By" />
+                              <input type="text" class="form-control" [(ngModel)]="TConductedBy"
+                                formcontrolname="TConductedBy" [ngModelOptions]="{standalone: true}"
+                                placeholder="Conducted By" />
                             </div>
                           </div>
                         </div>
@@ -1034,7 +1113,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">From</label>
                             <div class="col-sm-9">
-                              <input class="form-control" [(ngModel)]="TFrom" formcontrolname="TFrom" [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
+                              <input class="form-control" [(ngModel)]="TFrom" formcontrolname="TFrom"
+                                [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
                             </div>
                           </div>
                         </div>
@@ -1043,7 +1123,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">To</label>
                             <div class="col-sm-9">
-                              <input class="form-control" [(ngModel)]="TTo" formcontrolname="TTo" [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
+                              <input class="form-control" [(ngModel)]="TTo" formcontrolname="TTo"
+                                [ngModelOptions]="{standalone: true}" placeholder="dd/mm/yyyy" />
                             </div>
                           </div>
                         </div>
@@ -1052,19 +1133,22 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Certificate</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="TCertificate" formcontrolname="TCertificate" [ngModelOptions]="{standalone: true}" />
+                              <input type="text" class="form-control" [(ngModel)]="TCertificate"
+                                formcontrolname="TCertificate" [ngModelOptions]="{standalone: true}" />
                             </div>
                           </div>
                         </div>
-                       
+
                         <div class="col-md-2">
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Skill Type</label>
                             <div class="col-sm-12">
                               <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="TSkill" formcontrolname="TSkill" [ngModelOptions]="{standalone: true}" />
+                                <input type="text" class="form-control" [(ngModel)]="TSkill" formcontrolname="TSkill"
+                                  [ngModelOptions]="{standalone: true}" />
                                 <span class="input-group-btn">
-                                  &nbsp;&nbsp;<input type="button" (click)="addTrainings()" class="btn btn-success" value="Add" />
+                                  &nbsp;&nbsp;<input type="button" (click)="addTrainings()" class="btn btn-success"
+                                    value="Add" />
                                 </span>
                               </div>
                             </div>
@@ -1090,35 +1174,38 @@
                               <td>{{ row.TTo }}</td>
                               <td>{{ row.TCertificate }}</td>
                               <td>{{ row.TSkill }}</td>
-                              <td><button id="removeTraining" class="btn btn-danger" (click)="deleteRowTraining(i)">Remove</button></td>
+                              <td><button id="removeTraining" class="btn btn-danger"
+                                  (click)="deleteRowTraining(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
 
                       </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
+              </ng-template>
+            </ngb-tab>
 
 
-          <ngb-tab title="Experience">
-            <ng-template ngbTabContent>
-              <h4>Experience</h4>
-              <p>
-                Employee experience
-              </p>
+            <ngb-tab title="Experience">
+              <ng-template ngbTabContent>
+                <h4>Experience</h4>
+                <p>
+                  Employee experience
+                </p>
 
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
                       <div class="row">
                         <div class="col-md-2">
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Organization</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="EOrganization" formcontrolname="EOrganization" [ngModelOptions]="{standalone: true}" placeholder="Organization" />
+                              <input type="text" class="form-control" [(ngModel)]="EOrganization"
+                                formcontrolname="EOrganization" [ngModelOptions]="{standalone: true}"
+                                placeholder="Organization" />
                             </div>
                           </div>
                         </div>
@@ -1127,7 +1214,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Address</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="EAddress" formcontrolname="EAddress" [ngModelOptions]="{standalone: true}" placeholder="Address" />
+                              <input type="text" class="form-control" [(ngModel)]="EAddress" formcontrolname="EAddress"
+                                [ngModelOptions]="{standalone: true}" placeholder="Address" />
                             </div>
                           </div>
                         </div>
@@ -1136,7 +1224,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Tel No.</label>
                             <div class="col-sm-9">
-                              <input class="form-control" [(ngModel)]="EPhone" formcontrolname="EPhone" [ngModelOptions]="{standalone: true}" placeholder="Telephone" />
+                              <input class="form-control" [(ngModel)]="EPhone" formcontrolname="EPhone"
+                                [ngModelOptions]="{standalone: true}" placeholder="Telephone" />
                             </div>
                           </div>
                         </div>
@@ -1145,7 +1234,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Designation</label>
                             <div class="col-sm-9">
-                              <input class="form-control" [(ngModel)]="EDesignation" formcontrolname="EDesignation" [ngModelOptions]="{standalone: true}" placeholder="Designation" />
+                              <input class="form-control" [(ngModel)]="EDesignation" formcontrolname="EDesignation"
+                                [ngModelOptions]="{standalone: true}" placeholder="Designation" />
                             </div>
                           </div>
                         </div>
@@ -1154,7 +1244,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">From</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="EFrom" formcontrolname="EFrom" [ngModelOptions]="{standalone: true}" />
+                              <input type="text" class="form-control" [(ngModel)]="EFrom" formcontrolname="EFrom"
+                                [ngModelOptions]="{standalone: true}" />
                             </div>
                           </div>
                         </div>
@@ -1163,7 +1254,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">To</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="ETo" formcontrolname="ETo" [ngModelOptions]="{standalone: true}" />
+                              <input type="text" class="form-control" [(ngModel)]="ETo" formcontrolname="ETo"
+                                [ngModelOptions]="{standalone: true}" />
                             </div>
                           </div>
                         </div>
@@ -1172,7 +1264,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Leave Resaosn</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="ELeaveReason" formcontrolname="ELeaveReason" [ngModelOptions]="{standalone: true}" />
+                              <input type="text" class="form-control" [(ngModel)]="ELeaveReason"
+                                formcontrolname="ELeaveReason" [ngModelOptions]="{standalone: true}" />
                             </div>
                           </div>
                         </div>
@@ -1182,9 +1275,11 @@
                             <label class="col-sm-12 col-form-label">Last Salary Withdrawn</label>
                             <div class="col-sm-12">
                               <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="ELastSalaryDrawn" formcontrolname="ELastSalaryDrawn" [ngModelOptions]="{standalone: true}" />
+                                <input type="text" class="form-control" [(ngModel)]="ELastSalaryDrawn"
+                                  formcontrolname="ELastSalaryDrawn" [ngModelOptions]="{standalone: true}" />
                                 <span class="input-group-btn">
-                                  &nbsp;&nbsp;<input type="button" (click)="addExperiences()" class="btn btn-success" value="Add" />
+                                  &nbsp;&nbsp;<input type="button" (click)="addExperiences()" class="btn btn-success"
+                                    value="Add" />
                                 </span>
                               </div>
                             </div>
@@ -1214,35 +1309,37 @@
                               <td>{{ row.ETo }}</td>
                               <td>{{ row.ELeaveReason }}</td>
                               <td>{{ row.ELastSalaryDrawn }}</td>
-                              <td><button id="removeExperience" class="btn btn-danger" (click)="deleteRowExperience(i)">Remove</button></td>
+                              <td><button id="removeExperience" class="btn btn-danger"
+                                  (click)="deleteRowExperience(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
 
                       </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
+              </ng-template>
+            </ngb-tab>
 
 
-          <ngb-tab title="Family">
-            <ng-template ngbTabContent>
-              <h4>Family</h4>
-              <p>
-                Employee family
-              </p>
+            <ngb-tab title="Family">
+              <ng-template ngbTabContent>
+                <h4>Family</h4>
+                <p>
+                  Employee family
+                </p>
 
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
                       <div class="row">
                         <div class="col-md-3">
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Name of Dependance</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="DNameofDependance" formcontrolname="DNameofDependance" [ngModelOptions]="{standalone: true}" />
+                              <input type="text" class="form-control" [(ngModel)]="DNameofDependance"
+                                formcontrolname="DNameofDependance" [ngModelOptions]="{standalone: true}" />
                             </div>
                           </div>
                         </div>
@@ -1251,7 +1348,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Relationship</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="DRelationShip" formcontrolname="DRelationShip" [ngModelOptions]="{standalone: true}" />
+                              <input type="text" class="form-control" [(ngModel)]="DRelationShip"
+                                formcontrolname="DRelationShip" [ngModelOptions]="{standalone: true}" />
                             </div>
                           </div>
                         </div>
@@ -1260,7 +1358,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Date of Birth</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="dDateOfBirth" formcontrolname="dDateOfBirth" [ngModelOptions]="{standalone: true}" />
+                              <input type="text" class="form-control" [(ngModel)]="dDateOfBirth"
+                                formcontrolname="dDateOfBirth" [ngModelOptions]="{standalone: true}" />
                             </div>
                           </div>
                         </div>
@@ -1269,7 +1368,8 @@
                           <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Age</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" [(ngModel)]="DAge" formcontrolname="DAge" [ngModelOptions]="{standalone: true}" />
+                              <input type="text" class="form-control" [(ngModel)]="DAge" formcontrolname="DAge"
+                                [ngModelOptions]="{standalone: true}" />
                             </div>
                           </div>
                         </div>
@@ -1278,9 +1378,11 @@
                             <label class="col-sm-12 col-form-label">Gender</label>
                             <div class="col-sm-12">
                               <div class="input-group">
-                                <input type="text" class="form-control" [(ngModel)]="DGender" formcontrolname="DGender" [ngModelOptions]="{standalone: true}" />
+                                <input type="text" class="form-control" [(ngModel)]="DGender" formcontrolname="DGender"
+                                  [ngModelOptions]="{standalone: true}" />
                                 <span class="input-group-btn">
-                                  &nbsp;&nbsp;<input type="button" (click)="addFamilies()" class="btn btn-success" value="Add" />
+                                  &nbsp;&nbsp;<input type="button" (click)="addFamilies()" class="btn btn-success"
+                                    value="Add" />
                                 </span>
                               </div>
                             </div>
@@ -1304,38 +1406,39 @@
                               <td>{{ row.DDateOfBirth }}</td>
                               <td>{{ row.DAge }}</td>
                               <td>{{ row.DGender }}</td>
-                              <td><button id="removeExperience" class="btn btn-danger" (click)="deleteRowFamily(i)">Remove</button></td>
+                              <td><button id="removeExperience" class="btn btn-danger"
+                                  (click)="deleteRowFamily(i)">Remove</button></td>
                             </tr>
                           </table>
                         </div>
 
                       </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
+              </ng-template>
+            </ngb-tab>
 
-          <ngb-tab title="Search">
-            <ng-template ngbTabContent>
-              <h4>Address</h4>
-              <p>
-                Search employee details here
-              </p>
-            </ng-template>
-          </ngb-tab>
-        </ngb-tabset>
+            <ngb-tab title="Search">
+              <ng-template ngbTabContent>
+                <h4>Address</h4>
+                <p>
+                  Search employee details here
+                </p>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
 
-        <!-- Buttons here -->
-        <div class="row">
-          <div class="col text-center">
-            <button class="btn btn-success" (click)="buttonClicked()">Save</button>
-            <button class="btn btn-primary">Edit</button>
-            <button class="btn btn-danger">Delete</button>
+          <!-- Buttons here -->
+          <div class="row">
+            <div class="col text-center">
+              <button class="btn btn-success" (click)="buttonClicked()">Save</button>
+              <button class="btn btn-primary">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
     </div>
   </div>
-</div> 
+</div>

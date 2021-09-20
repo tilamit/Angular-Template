@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { DatePipe } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { LoginService } from './service/LoginService';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 @NgModule({
   declarations: [ 
@@ -51,7 +52,8 @@ import { LoginService } from './service/LoginService';
     ReactiveFormsModule,
     ChartsModule,
     Ng2CompleterModule,
-    HttpClientModule 
+    HttpClientModule,
+    AutocompleteLibModule
   ],
   providers: [ThemeService, DatePipe, UserService, LoginService],
   bootstrap: [AppComponent]

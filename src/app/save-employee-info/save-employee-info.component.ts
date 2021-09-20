@@ -19,7 +19,9 @@ export class SaveEmployeeInfoComponent implements OnInit {
   ngOnInit() {
     this.GetDeptList();
     this.GetSectionList();
+    this,this.GetShiftList();
     this.GetDesignationList();
+    this.LoadEmpData();
   }
 
   objTempEmp: EmployeeInformation;
@@ -100,7 +102,9 @@ export class SaveEmployeeInfoComponent implements OnInit {
   public section: any;
   public sectionMng: any;
   public designation: any;
-  public shift: any;
+  public shifts: any;
+
+  public employees: [];
 
   seletedValueDept = '0';
   seletedValueSection = '0';
@@ -252,10 +256,10 @@ export class SaveEmployeeInfoComponent implements OnInit {
   GetShiftList() {
     debugger;
     this.dataservice.GetShiftList().subscribe(result => {
-      this.shift = JSON.parse(result);
+      this.shifts = JSON.parse(result);
 
 
-      console.log(this.shift);
+      console.log(this.shifts);
     }, error => console.error(error));
   }
 
@@ -270,7 +274,7 @@ export class SaveEmployeeInfoComponent implements OnInit {
       let obj = {} as EmpInfo;
       obj.BO = this.angForm.value;
       obj.lstEducation = this.rows;
-      obj.ShortCourse = this.rowsCourses; 
+      obj.ShortCourse = this.rowsCourses;
       obj.Training = this.rowsTrainings;
       obj.Experience = this.rowsExperiences;
       obj.Family = this.rowsFamilies;
@@ -370,5 +374,51 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
   deleteRowFamily(id) {
     this.rowsFamilies.splice(id);
+  }
+
+  
+  //Get all employee
+  keyword = 'EMPNO';
+  LoadEmpData() {
+    debugger;
+    this.dataservice.GetAllEmp().subscribe(result => {
+      this.employees = JSON.parse(result);
+
+      console.log(this.employees);
+    }, error => console.error(error));
+  }
+
+  //Test data
+  //keyword = 'id';
+  /*public employees = [
+    {
+      id: "Z0930",
+      name: 'Amit',
+    },
+    {
+      id: "Z0928",
+      name: 'Javed',
+    },
+    {
+      id: "M1512",
+      name: 'Chandan',
+    },
+    {
+      id: "Z1014",
+      name: 'Saleh',
+    },
+  ];*/
+
+  selectEvent(item) {
+    alert('Id: ' + item.EMPNO + ' Name: ' + item.ENAME);
+  }
+
+  onChangeSearch(search: string) {
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+
+  onFocused(e) {
+    // do something
   }
 }
