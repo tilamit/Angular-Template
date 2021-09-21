@@ -112,4 +112,16 @@ export class UserService {
 
     return this.http.post<EmpInfo>(a, aEmpInfo);
   }
+
+  GetIndiEmpDetails(empNo: string) {
+    debugger;
+
+    this.Url = 'http://localhost:53743/api/values/';
+    var a = this.Url + 'GetIndiEmpDetails';
+    let params = new HttpParams().set("empNo", empNo);
+
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this.http.get<any>(a, { params: params }); 
+  }
 }

@@ -19,7 +19,7 @@ export class SaveEmployeeInfoComponent implements OnInit {
   ngOnInit() {
     this.GetDeptList();
     this.GetSectionList();
-    this,this.GetShiftList();
+    this, this.GetShiftList();
     this.GetDesignationList();
     this.LoadEmpData();
   }
@@ -28,7 +28,7 @@ export class SaveEmployeeInfoComponent implements OnInit {
   angForm: FormGroup;
 
   //EMP_PERSONAL - STARTS
-  vEmployeeManualID: string;
+  /*vEmployeeManualID: string;
   vFirstName: string;
   vLastName: string;
   vMaritalStatusID: string;
@@ -46,7 +46,7 @@ export class SaveEmployeeInfoComponent implements OnInit {
   PlaceOfIssue: string;
   ValidTill: string;
   Ref1: string;
-  Ref2: string;
+  Ref2: string;*/
   //EMP_PERSONAL - ENDS
 
   public InstituteName: string;
@@ -376,7 +376,7 @@ export class SaveEmployeeInfoComponent implements OnInit {
     this.rowsFamilies.splice(id);
   }
 
-  
+
   //Get all employee
   keyword = 'EMPNO';
   LoadEmpData() {
@@ -409,8 +409,19 @@ export class SaveEmployeeInfoComponent implements OnInit {
     },
   ];*/
 
+  get vFirstName() {return this.angForm.get('vFirstName')}; 
   selectEvent(item) {
     alert('Id: ' + item.EMPNO + ' Name: ' + item.ENAME);
+
+    debugger;
+
+    this.dataservice.GetIndiEmpDetails(item.EMPNO).subscribe(result => {
+      this.objTempEmp = JSON.parse(result);
+
+      console.log(this.objTempEmp[0].VFIRSTNAME);
+
+      this.vFirstName.setValue(this.objTempEmp[0].VFIRSTNAME);
+    }, error => console.error(error));
   }
 
   onChangeSearch(search: string) {
