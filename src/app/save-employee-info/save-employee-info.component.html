@@ -107,8 +107,8 @@
                                 <div class="col-sm-9">
                                   <select class="form-control" [(ngModel)]="vMaritalStatusID"
                                     formControlName="vMaritalStatusID">
-                                    <option>Married</option>
-                                    <option>Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Single">Single</option>
                                   </select>
                                 </div>
                               </div>
@@ -116,8 +116,8 @@
                                 <label class="col-sm-3 col-form-label">Gender</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" [(ngModel)]="vGenderID" formControlName="vGenderID">
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                   </select>
                                 </div>
                               </div>
@@ -146,10 +146,10 @@
                                 <div class="col-sm-9">
                                   <select class="form-control" [(ngModel)]="vNationalityID"
                                     formControlName="vNationalityID">
-                                    <option>BANGLADESHI</option>
-                                    <option>SRILANKAN</option>
-                                    <option>INDIAN</option>
-                                    <option>PAKISTANI</option>
+                                    <option value="BANGLADESHI">BANGLADESHI</option>
+                                    <option value="SRILANKAN">SRILANKAN</option>
+                                    <option value="INDIAN">INDIAN</option>
+                                    <option value="PAKISTANI">PAKISTANI</option>
                                   </select>
                                 </div>
                               </div>
@@ -159,8 +159,8 @@
                                 <label class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" [(ngModel)]="EMP_Status" formControlName="EMP_Status">
-                                    <option>Active</option>
-                                    <option>Inactive</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
                                   </select>
                                 </div>
                               </div>
@@ -186,9 +186,27 @@
                             </div>
                             <div class="col-md-6">
                               <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Blood Group 2</label>
+                                <div class="col-sm-9">
+                                  <select class="form-control" [(ngModel)]="vBloodGroupID_2">
+                                    <option value="BGI-1">A+</option>
+                                    <option value="BGI-2">A-</option>
+                                    <option value="BGI-3">B+</option>
+                                    <option value="BGI-4">B-</option>
+                                    <option value="BGI-5">O+</option>
+                                    <option value="BGI-6">O-</option>
+                                    <option value="BGI-7">AB+</option>
+                                    <option value="BGI-8">AB-</option>
+                                    <option value="BGI-9">N/A</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Identity Mark</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="vIdentificationMark"
+                                  <input type="text" class="form-control"
                                     formControlName="vIdentificationMark" />
                                 </div>
                               </div>
@@ -198,10 +216,10 @@
                                 <label class="col-sm-3 col-form-label">Religion</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" [(ngModel)]="vReligionID" formControlName="vReligionID">
-                                    <option>HINDUISM</option>
-                                    <option>ISLAM</option>
-                                    <option>BUDDHISM</option>
-                                    <option>CHRISTIAN</option>
+                                    <option value="HINDUISM">HINDUISM</option>
+                                    <option value="ISLAM">ISLAM</option>
+                                    <option value="BUDDHISM">BUDDHISM</option>
+                                    <option value="CHRISTIAN">CHRISTIAN</option>
                                   </select>
                                 </div>
                               </div>
@@ -211,7 +229,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Email</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="Email" formControlName="Email" />
+                                  <input type="text" class="form-control" formControlName="Email" />
                                 </div>
                               </div>
                             </div>
@@ -220,8 +238,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Mobile No</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="Mobile"
-                                    formControlName="Mobile" />
+                                  <input type="text" class="form-control" formControlName="Mobile" />
                                 </div>
                               </div>
                             </div>
@@ -229,8 +246,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">National ID</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="NationalId"
-                                    formControlName="NationalId" />
+                                  <input type="text" class="form-control" formControlName="NationalId" />
                                 </div>
                               </div>
                             </div>
@@ -238,8 +254,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Passport No</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="PassportNo"
-                                    formControlName="PassportNo" />
+                                  <input type="text" class="form-control" formControlName="PassportNo" />
                                 </div>
                               </div>
                             </div>
@@ -247,8 +262,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Place of Issue</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="PlaceOfIssue"
-                                    formControlName="PlaceOfIssue" />
+                                  <input type="text" class="form-control" formControlName="PlaceOfIssue" />
                                 </div>
                               </div>
                             </div>
@@ -256,8 +270,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Valid Till</label>
                                 <div class="col-sm-9">
-                                  <input class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="ValidTill"
-                                    formControlName="ValidTill" />
+                                  <input class="form-control" placeholder="dd/mm/yyyy" formControlName="ValidTill" />
                                 </div>
                               </div>
                             </div>
@@ -270,7 +283,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Reference 1</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="Ref1" formControlName="Ref1" />
+                                  <input type="text" class="form-control" formControlName="Ref1" />
                                 </div>
                               </div>
                             </div>
@@ -280,7 +293,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Reference 2</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" [(ngModel)]="Ref2" formControlName="Ref2" />
+                                  <input type="text" class="form-control" formControlName="Ref2" />
                                 </div>
                               </div>
                             </div>

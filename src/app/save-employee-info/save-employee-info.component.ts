@@ -15,13 +15,14 @@ export class SaveEmployeeInfoComponent implements OnInit {
   constructor(private fb: FormBuilder, private dataservice: UserService, private datePipe: DatePipe) {
     this.validateForm();
   }
-
+  vBloodGroupID_2:any="";
   ngOnInit() {
     this.GetDeptList();
     this.GetSectionList();
     this, this.GetShiftList();
     this.GetDesignationList();
     this.LoadEmpData();
+    this. vBloodGroupID_2="BGI-2";
   }
 
   objTempEmp: EmployeeInformation;
@@ -409,7 +410,26 @@ export class SaveEmployeeInfoComponent implements OnInit {
     },
   ];*/
 
+  get vEmployeeManualID() {return this.angForm.get('vEmployeeManualID')};
   get vFirstName() {return this.angForm.get('vFirstName')}; 
+  get vLastName() {return this.angForm.get('vLastName')}; 
+  get vGenderID() {return this.angForm.get('vGenderID')};
+  get dDateOfBirth() {return this.angForm.get('dDateOfBirth')}; 
+  get vBloodGroupID() {return this.angForm.get('vBloodGroupID')};
+  get vIdentificationMark() {return this.angForm.get('vIdentificationMark')};
+  get Email() {return this.angForm.get('Email')}; 
+  get Mobile() {return this.angForm.get('Mobile')};
+  get NationalId() {return this.angForm.get('NationalId')}; 
+  get PassportNo() {return this.angForm.get('PassportNo')}; 
+  get PlaceOfIssue() {return this.angForm.get('PlaceOfIssue')}; 
+  get ValidTill() {return this.angForm.get('ValidTill')};
+  get Ref1() {return this.angForm.get('Ref1')};
+  get Ref2() {return this.angForm.get('Ref2')};
+  get vMaritalStatusID() {return this.angForm.get('vMaritalStatusID')};
+  get vNationalityID() {return this.angForm.get('vNationalityID')};
+  get EMP_Status() {return this.angForm.get('EMP_Status')};
+  get vReligionID() {return this.angForm.get('vReligionID')};
+  
   selectEvent(item) {
     alert('Id: ' + item.EMPNO + ' Name: ' + item.ENAME);
 
@@ -418,10 +438,31 @@ export class SaveEmployeeInfoComponent implements OnInit {
     this.dataservice.GetIndiEmpDetails(item.EMPNO).subscribe(result => {
       this.objTempEmp = JSON.parse(result);
 
-      console.log(this.objTempEmp[0].VFIRSTNAME);
+      console.log(this.objTempEmp);
 
+      this.vEmployeeManualID.setValue(this.objTempEmp[0].VEMPLOYEEMANUALID);
       this.vFirstName.setValue(this.objTempEmp[0].VFIRSTNAME);
-    }, error => console.error(error));
+      this.vLastName.setValue(this.objTempEmp[0].VLASTNAME);
+      this.vGenderID.setValue(this.objTempEmp[0].VGENDERID);
+      this.vBloodGroupID.setValue(this.objTempEmp[0].VBLOODGROUPID);
+      this.dDateOfBirth.setValue(this.datePipe.transform(this.objTempEmp[0].DDATEOFBIRTH, 'MM/dd/yyyy'));
+      this.vBloodGroupID.setValue(this.objTempEmp[0].VBLOODGROUPID);
+      this.vIdentificationMark.setValue(this.objTempEmp[0].VIDENTIFICATIONMARK);
+      this.Email.setValue(this.objTempEmp[0].EMAIL);
+      this.Mobile.setValue(this.objTempEmp[0].MOBILE);
+      this.NationalId.setValue(this.objTempEmp[0].NATIONALID);
+      this.PassportNo.setValue(this.objTempEmp[0].PASSPORTNO);
+      this.PlaceOfIssue.setValue(this.objTempEmp[0].PLACEOFISSUE);
+      this.ValidTill.setValue(this.datePipe.transform(this.objTempEmp[0].VALIDTILL, 'MM/dd/yyyy'));
+      this.Ref1.setValue(this.objTempEmp[0].REF1);
+      this.Ref2.setValue(this.objTempEmp[0].REF2);
+      this.vMaritalStatusID.setValue(this.objTempEmp[0].VMARITALSTATUSID);
+      this.vNationalityID.setValue(this.objTempEmp[0].VNATIONALITYID);
+      this.EMP_Status.setValue(this.objTempEmp[0].EMP_STATUS);
+      this.Email.setValue(this.objTempEmp[0].EMAIL);
+      this.vReligionID.setValue(this.objTempEmp[0].VRELIGIONID);
+      this.NationalId.setValue(this.objTempEmp[0].NATIONAL_ID);
+    }, error => console.error(error)); 
   }
 
   onChangeSearch(search: string) {
