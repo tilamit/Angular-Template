@@ -124,4 +124,16 @@ export class UserService {
 
     return this.http.get<any>(a, { params: params }); 
   }
+
+  GetIndiEmpAddress(empNo: string) {
+    debugger;
+
+    this.Url = 'http://localhost:53743/api/values/';
+    var a = this.Url + 'GetIndiEmpAddress';
+    let params = new HttpParams().set("empNo", empNo);
+
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this.http.get<any>(a, { params: params }); 
+  }
 }

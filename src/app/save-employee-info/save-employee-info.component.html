@@ -105,7 +105,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Marital Status</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vMaritalStatusID"
+                                  <select class="form-control" [(ngModel)]="vMaritalStatusID" [ngModelOptions]="{standalone: true}"
                                     formControlName="vMaritalStatusID">
                                     <option value="Married">Married</option>
                                     <option value="Single">Single</option>
@@ -115,7 +115,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Gender</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vGenderID" formControlName="vGenderID">
+                                  <select class="form-control" [(ngModel)]="vGenderID" [ngModelOptions]="{standalone: true}" formControlName="vGenderID">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                   </select>
@@ -144,7 +144,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Nationality</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vNationalityID"
+                                  <select class="form-control" [(ngModel)]="vNationalityID" [ngModelOptions]="{standalone: true}"
                                     formControlName="vNationalityID">
                                     <option value="BANGLADESHI">BANGLADESHI</option>
                                     <option value="SRILANKAN">SRILANKAN</option>
@@ -158,7 +158,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="EMP_Status" formControlName="EMP_Status">
+                                  <select class="form-control" [(ngModel)]="EMP_Status" [ngModelOptions]="{standalone: true}" formControlName="EMP_Status">
                                     <option value="Active">Active</option>
                                     <option value="Inactive">Inactive</option>
                                   </select>
@@ -169,7 +169,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Blood Group</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vBloodGroupID"
+                                  <select class="form-control" [(ngModel)]="vBloodGroupID" [ngModelOptions]="{standalone: true}"
                                     formControlName="vBloodGroupID">
                                     <option value="BGI-1">A+</option>
                                     <option value="BGI-2">A-</option>
@@ -188,7 +188,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Blood Group 2</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vBloodGroupID_2">
+                                  <select class="form-control" [(ngModel)]="vBloodGroupID_2" [ngModelOptions]="{standalone: true}">
                                     <option value="BGI-1">A+</option>
                                     <option value="BGI-2">A-</option>
                                     <option value="BGI-3">B+</option>
@@ -206,8 +206,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Identity Mark</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control"
-                                    formControlName="vIdentificationMark" />
+                                  <input type="text" class="form-control" formControlName="vIdentificationMark" />
                                 </div>
                               </div>
                             </div>
@@ -215,7 +214,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Religion</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" [(ngModel)]="vReligionID" formControlName="vReligionID">
+                                  <select class="form-control" [(ngModel)]="vReligionID" [ngModelOptions]="{standalone: true}" formControlName="vReligionID">
                                     <option value="HINDUISM">HINDUISM</option>
                                     <option value="ISLAM">ISLAM</option>
                                     <option value="BUDDHISM">BUDDHISM</option>
@@ -341,7 +340,7 @@
                                 <label class="col-sm-3 col-form-label">Department</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" formControlName="vDepartmentName"
-                                    [(ngModel)]="seletedValueDept">
+                                    [(ngModel)]="seletedValueDept" [ngModelOptions]="{standalone: true}">
                                     <option value="0">------Select Department------</option>
                                     <option *ngFor="let deptList of dept" value="{{ deptList.DEPT_NO }}">{{
                                       deptList.DEPT_NAME }}</option>
@@ -354,7 +353,7 @@
                                 <label class="col-sm-3 col-form-label">Section</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" formControlName="vSectionName"
-                                    [(ngModel)]="seletedValueSection">
+                                    [(ngModel)]="seletedValueSection" [ngModelOptions]="{standalone: true}">
                                     <option value="0">------Select Section------</option>
                                     <option *ngFor="let sectionList of section" value="{{ sectionList.SECTION_NO }}">{{
                                       sectionList.SECTION_NAME }}</option>
@@ -377,7 +376,7 @@
                                 <label class="col-sm-3 col-form-label">Manag. Section</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" formControlName="ManagementSectionName"
-                                    [(ngModel)]="seletedValueSectionMng">
+                                    [(ngModel)]="seletedValueSectionMng" [ngModelOptions]="{standalone: true}">
                                     <option value="0">------Select Section------</option>
                                     <option *ngFor="let sectionList of sectionMng" value="{{ sectionList.SECTION_NO }}">
                                       {{ sectionList.SECTION_NAME }}</option>
@@ -392,7 +391,7 @@
                                 <label class="col-sm-3 col-form-label">Designation</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" formControlName="vDesignationName"
-                                    [(ngModel)]="seletedValueDesc">
+                                    [(ngModel)]="seletedValueDesc" [ngModelOptions]="{standalone: true}">
                                     <option value="0">------Select Designation------</option>
                                     <option *ngFor="let descList of designation" value="{{ descList.DES_ID }}">{{
                                       descList.DESIGNATION_NAME }}</option>
@@ -404,9 +403,9 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Employee Type</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="vEmployeeTypeID">
-                                    <option>Management</option>
-                                    <option>Worker</option>
+                                  <select class="form-control" formControlName="vEmployeeTypeID" [(ngModel)]="seletedValueEmpType" [ngModelOptions]="{standalone: true}">
+                                    <option value="Management">Management</option>
+                                    <option value="Worker">Worker</option>
                                   </select>
                                 </div>
                               </div>
@@ -415,7 +414,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Employee Status</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="EMP_Status">
+                                  <select class="form-control" formControlName="EMP_Status" [(ngModel)]="seletedValueEmpStatus" [ngModelOptions]="{standalone: true}">
                                     <option>Active</option>
                                     <option>Inactive</option>
                                   </select>
@@ -426,9 +425,9 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Pay Type</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="PayType">
-                                    <option>BANK</option>
-                                    <option>CASH</option>
+                                  <select class="form-control" formControlName="PayType" [(ngModel)]="seletedValuePayType" [ngModelOptions]="{standalone: true}">
+                                    <option value="BANK">BANK</option>
+                                    <option value="CASH">CASH</option>
                                   </select>
                                 </div>
                               </div>
@@ -437,9 +436,9 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Bank</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="Bank">
-                                    <option>SCB</option>
-                                    <option>HSBC</option>
+                                  <select class="form-control" formControlName="Bank" [(ngModel)]="seletedValueBank" [ngModelOptions]="{standalone: true}">
+                                    <option value="SCB">SCB</option>
+                                    <option value="HSBC">HSBC</option>
                                   </select>
                                 </div>
                               </div>
@@ -490,10 +489,10 @@
                                 <label class="col-sm-3 col-form-label">Shift</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" formControlName="vShiftID"
-                                    [(ngModel)]="seletedValueShift">
-                                    <option value="0">------Select Shift------</option>                        
+                                    [(ngModel)]="seletedValueShift" [ngModelOptions]="{standalone: true}">
+                                    <option value="0">------Select Shift------</option>
                                     <option *ngFor="let shiftList of shifts" value="{{ shiftList.SHIFT_CODE }}">{{
-                                        shiftList.SHIFT_NAME }}</option>
+                                      shiftList.SHIFT_NAME }}</option>
                                   </select>
                                 </div>
                               </div>
@@ -502,9 +501,9 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Weekly Off</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="WeeklyOffDayID">
-                                    <option>FRIDAY</option>
-                                    <option>SUNDAY</option>
+                                  <select class="form-control" formControlName="WeeklyOffDayID"  [(ngModel)]="seletedValueOff" [ngModelOptions]="{standalone: true}">
+                                    <option value="FRIDAY">FRIDAY</option>
+                                    <option value="SUNDAY">SUNDAY</option>
                                   </select>
                                 </div>
                               </div>
@@ -513,7 +512,7 @@
                               <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Leave Category</label>
                                 <div class="col-sm-9">
-                                  <select class="form-control" formControlName="LeaveCategory">
+                                  <select class="form-control" formControlName="LeaveCategory" [(ngModel)]="seletedValueLeave" [ngModelOptions]="{standalone: true}">
                                     <option value="L02">Management</option>
                                     <option value="L01">Worker</option>
                                     <option value="L03">Foreigner</option>
@@ -559,9 +558,6 @@
                           </div>
                           <!--Check box selection - Ends -->
 
-
-
-
                           <!-- Date  - Starts-->
                           <p class="card-description">
                             Date
@@ -589,7 +585,6 @@
                               </div>
                             </div>
 
-
                             <div class="col-md-6">
                               <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Joining Date</label>
@@ -598,8 +593,6 @@
                                 </div>
                               </div>
                             </div>
-
-
 
                             <div class="col-md-6">
                               <div class="form-group row">

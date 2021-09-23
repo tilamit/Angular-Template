@@ -15,17 +15,18 @@ export class SaveEmployeeInfoComponent implements OnInit {
   constructor(private fb: FormBuilder, private dataservice: UserService, private datePipe: DatePipe) {
     this.validateForm();
   }
-  vBloodGroupID_2:any="";
+  vBloodGroupID_2: any = "";
   ngOnInit() {
     this.GetDeptList();
     this.GetSectionList();
     this, this.GetShiftList();
     this.GetDesignationList();
     this.LoadEmpData();
-    this. vBloodGroupID_2="BGI-2";
+    this.vBloodGroupID_2 = "BGI-2";
   }
 
   objTempEmp: EmployeeInformation;
+  objTempEmpAddress: EmployeeInformation;
   angForm: FormGroup;
 
   //EMP_PERSONAL - STARTS
@@ -112,6 +113,12 @@ export class SaveEmployeeInfoComponent implements OnInit {
   seletedValueSectionMng = '0';
   seletedValueDesc = '0';
   seletedValueShift = '0';
+  seletedValueEmpStatus = '0';
+  seletedValueEmpType = '0';
+  seletedValuePayType = '0';
+  seletedValueBank = '0';
+  seletedValueLeave = '0';
+  seletedValueOff = '0';
 
   //Save employee details
   AddEmployee(addEmp: NgForm) {
@@ -410,26 +417,79 @@ export class SaveEmployeeInfoComponent implements OnInit {
     },
   ];*/
 
-  get vEmployeeManualID() {return this.angForm.get('vEmployeeManualID')};
-  get vFirstName() {return this.angForm.get('vFirstName')}; 
-  get vLastName() {return this.angForm.get('vLastName')}; 
-  get vGenderID() {return this.angForm.get('vGenderID')};
-  get dDateOfBirth() {return this.angForm.get('dDateOfBirth')}; 
-  get vBloodGroupID() {return this.angForm.get('vBloodGroupID')};
-  get vIdentificationMark() {return this.angForm.get('vIdentificationMark')};
-  get Email() {return this.angForm.get('Email')}; 
-  get Mobile() {return this.angForm.get('Mobile')};
-  get NationalId() {return this.angForm.get('NationalId')}; 
-  get PassportNo() {return this.angForm.get('PassportNo')}; 
-  get PlaceOfIssue() {return this.angForm.get('PlaceOfIssue')}; 
-  get ValidTill() {return this.angForm.get('ValidTill')};
-  get Ref1() {return this.angForm.get('Ref1')};
-  get Ref2() {return this.angForm.get('Ref2')};
-  get vMaritalStatusID() {return this.angForm.get('vMaritalStatusID')};
-  get vNationalityID() {return this.angForm.get('vNationalityID')};
-  get EMP_Status() {return this.angForm.get('EMP_Status')};
-  get vReligionID() {return this.angForm.get('vReligionID')};
-  
+  /*EMP_PERSONAL - Starts*/
+  get vEmployeeManualID() { return this.angForm.get('vEmployeeManualID') };
+  get vFirstName() { return this.angForm.get('vFirstName') };
+  get vLastName() { return this.angForm.get('vLastName') };
+  get vGenderID() { return this.angForm.get('vGenderID') };
+  get dDateOfBirth() { return this.angForm.get('dDateOfBirth') };
+  get vBloodGroupID() { return this.angForm.get('vBloodGroupID') };
+  get vIdentificationMark() { return this.angForm.get('vIdentificationMark') };
+  get Email() { return this.angForm.get('Email') };
+  get Mobile() { return this.angForm.get('Mobile') };
+  get NationalId() { return this.angForm.get('NationalId') };
+  get PassportNo() { return this.angForm.get('PassportNo') };
+  get PlaceOfIssue() { return this.angForm.get('PlaceOfIssue') };
+  get ValidTill() { return this.angForm.get('ValidTill') };
+  get Ref1() { return this.angForm.get('Ref1') };
+  get Ref2() { return this.angForm.get('Ref2') };
+  get vMaritalStatusID() { return this.angForm.get('vMaritalStatusID') };
+  get vNationalityID() { return this.angForm.get('vNationalityID') };
+  get vReligionID() { return this.angForm.get('vReligionID') };
+  /*EMP_PERSONAL - Ends*/
+
+  /*EMP_OFFICIAL - Starts*/
+  get vCompanyDivisionName() { return this.angForm.get('vCompanyDivisionName') };
+  get vDepartmentName() { return this.angForm.get('vDepartmentName') };
+  get vSectionName() { return this.angForm.get('vSectionName') };
+  get ManagementSectionName() { return this.angForm.get('ManagementSectionName') };
+  get vDesignationName() { return this.angForm.get('vDesignationName') };
+  get vEmployeeTypeID() { return this.angForm.get('vEmployeeTypeID') };
+  get EMP_Status() { return this.angForm.get('EMP_Status') };
+  get PayType() { return this.angForm.get('PayType') };
+  get Bank() { return this.angForm.get('Bank') };
+  get AccNo() { return this.angForm.get('AccNo') };
+  get Tin() { return this.angForm.get('Tin') };
+  get ResignDate() { return this.angForm.get('ResignDate') };
+  get ResingReason() { return this.angForm.get('ResingReason') };
+  get vShiftID() { return this.angForm.get('vShiftID') };
+  get WeeklyOffDayID() { return this.angForm.get('WeeklyOffDayID') };
+  get LeaveCategory() { return this.angForm.get('LeaveCategory') };
+  get OTAllowed() { return this.angForm.get('OTAllowed') };
+  get TransportAllowed() { return this.angForm.get('TransportAllowed') };
+  get Residance() { return this.angForm.get('Residance') };
+  get Tax() { return this.angForm.get('Tax') };
+  get Pf() { return this.angForm.get('Pf') };
+  get dApplicationDate() { return this.angForm.get('dApplicationDate') };
+  get dInterviewDate() { return this.angForm.get('dInterviewDate') };
+  get dJoiningDate() { return this.angForm.get('dJoiningDate') };
+  get dConfirmDate() { return this.angForm.get('dConfirmDate') };
+  /*EMP_OFFICIAL - Ends*/
+
+   /*EMP_LOCATION - Starts*/
+   get PAddress() { return this.angForm.get('PAddress') };
+   get PVillage() { return this.angForm.get('PVillage') };
+   get PPo() { return this.angForm.get('PPo') };
+   get PPs() { return this.angForm.get('PPs') };
+   get PCity() { return this.angForm.get('PCity') };
+   get PDistrict() { return this.angForm.get('PDistrict') };
+   get PPin() { return this.angForm.get('PPin') };
+   get PPhone() { return this.angForm.get('PPhone') };
+   get PFax() { return this.angForm.get('PFax') };
+   get PContact() { return this.angForm.get('PContact') };
+
+   get PrAddress() { return this.angForm.get('PrAddress') };
+   get PrVillage() { return this.angForm.get('PrVillage') };
+   get PrPo() { return this.angForm.get('PrPo') };
+   get PrPs() { return this.angForm.get('PrPs') };
+   get PrCity() { return this.angForm.get('PrCity') };
+   get PrDistrict() { return this.angForm.get('PrDistrict') };
+   get PrPin() { return this.angForm.get('PrPin') };
+   get PrPhone() { return this.angForm.get('PrPhone') };
+   get PrFax() { return this.angForm.get('PrFax') };
+   get PrContact() { return this.angForm.get('PrContact') };
+   /*EMP_LOCATION - Ends*/
+
   selectEvent(item) {
     alert('Id: ' + item.EMPNO + ' Name: ' + item.ENAME);
 
@@ -440,6 +500,7 @@ export class SaveEmployeeInfoComponent implements OnInit {
 
       console.log(this.objTempEmp);
 
+      /*EMP_PERSONAL - Starts*/
       this.vEmployeeManualID.setValue(this.objTempEmp[0].VEMPLOYEEMANUALID);
       this.vFirstName.setValue(this.objTempEmp[0].VFIRSTNAME);
       this.vLastName.setValue(this.objTempEmp[0].VLASTNAME);
@@ -462,7 +523,97 @@ export class SaveEmployeeInfoComponent implements OnInit {
       this.Email.setValue(this.objTempEmp[0].EMAIL);
       this.vReligionID.setValue(this.objTempEmp[0].VRELIGIONID);
       this.NationalId.setValue(this.objTempEmp[0].NATIONAL_ID);
-    }, error => console.error(error)); 
+      /*EMP_PERSONAL - Ends*/
+
+      /*EMP_OFFICIAL - Starts*/
+      this.vCompanyDivisionName.setValue(this.objTempEmp[0].VCOMPANYDIVISIONNAME);
+      this.seletedValueDept = (this.objTempEmp[0].VDEPARTMENTNAME);
+      this.seletedValueSection = (this.objTempEmp[0].VSECTIONNAME);
+      this.seletedValueSectionMng = (this.objTempEmp[0].VSECTIONNAME);
+      this.seletedValueDesc = (this.objTempEmp[0].VDESIGNATIONNAME);
+      this.seletedValueEmpType = (this.objTempEmp[0].VEMPLOYEETYPEID);
+      this.seletedValueEmpStatus = (this.objTempEmp[0].EMP_STATUS);
+      this.seletedValuePayType = (this.objTempEmp[0].PAYTYPE);
+      this.seletedValueBank = (this.objTempEmp[0].BANK);
+      this.seletedValueShift = (this.objTempEmp[0].VSHIFTID);
+      this.seletedValueOff = (this.objTempEmp[0].WEEKLYOFFDAYID);
+      this.seletedValueLeave = (this.objTempEmp[0].LEAVECATEGORY);
+      this.AccNo.setValue(this.objTempEmp[0].ACCNO);
+      this.Tin.setValue(this.objTempEmp[0].TIN);
+      this.ResignDate.setValue(this.datePipe.transform(this.objTempEmp[0].RESIGNDATE, 'MM/dd/yyyy'));
+      this.ResingReason.setValue(this.objTempEmp[0].RESINGREASON);
+      this.vShiftID.setValue(this.objTempEmp[0].VSHIFTID);
+      this.WeeklyOffDayID.setValue(this.objTempEmp[0].WEEKLYOFFDAYID);
+      this.LeaveCategory.setValue(this.objTempEmp[0].LEAVECATEGORY);
+
+      if (this.objTempEmp[0].OTALLOWED == "Y") {
+        this.OTAllowed.setValue(true);
+      } else {
+        this.OTAllowed.setValue(false);
+      }
+
+      if (this.objTempEmp[0].TRANSPORTALLOWED == "Y") {
+        this.TransportAllowed.setValue(true);
+      } else {
+        this.TransportAllowed.setValue(false);
+      }
+
+      if (this.objTempEmp[0].RESIDANCE == "Y") {
+        this.Residance.setValue(true);
+      } else {
+        this.Residance.setValue(false);
+      }
+
+      if (this.objTempEmp[0].TAX == "Y") {
+        this.Tax.setValue(true);
+      } else {
+        this.Tax.setValue(false);
+      }
+
+      if (this.objTempEmp[0].PF == "Y") {
+        this.Pf.setValue(true);
+      } else {
+        this.Pf.setValue(false);
+      }
+
+      this.dApplicationDate.setValue(this.datePipe.transform(this.objTempEmp[0].DAPPLICATIONDATE, 'MM/dd/yyyy'));
+      this.dInterviewDate.setValue(this.datePipe.transform(this.objTempEmp[0].DINTERVIEWDATE, 'MM/dd/yyyy'));
+      this.dJoiningDate.setValue(this.datePipe.transform(this.objTempEmp[0].DJOININGDATE, 'MM/dd/yyyy'));
+      this.dConfirmDate.setValue(this.datePipe.transform(this.objTempEmp[0].DCONFIRMDATE, 'MM/dd/yyyy'));
+      /*EMP_OFFICIAL - Ends*/
+    }, error => console.error(error));
+
+    this.dataservice.GetIndiEmpAddress(item.EMPNO).subscribe(result => {
+      this.objTempEmpAddress = JSON.parse(result);
+
+      /*EMP_LOCATION - Starts*/
+      /*this.PAddress.setValue(this.objTempEmpAddress[0].PADDRESS);
+      this.PVillage.setValue(this.objTempEmpAddress[0].PVILLAGE);
+      this.PPo.setValue(this.objTempEmpAddress[0].PPO);
+      this.PPs.setValue(this.objTempEmpAddress[0].PPS);
+      this.PCity.setValue(this.objTempEmpAddress[0].PCITY);
+      this.PDistrict.setValue(this.objTempEmpAddress[0].PDISTRICT);
+      this.PPin.setValue(this.objTempEmpAddress[0].PPIN);
+      this.PPhone.setValue(this.objTempEmpAddress[0].PPHONE);
+      this.PFax.setValue(this.objTempEmpAddress[0].PFAX);
+      this.PContact.setValue(this.objTempEmpAddress[0].PCONTACT);
+
+      this.PrAddress.setValue(this.objTempEmpAddress[0].PRADDRESS);
+      this.PrVillage.setValue(this.objTempEmpAddress[0].PRVILLAGE);
+      this.PrPo.setValue(this.objTempEmpAddress[0].PRPO);
+      this.PrPs.setValue(this.objTempEmpAddress[0].PRPS);
+      this.PrCity.setValue(this.objTempEmpAddress[0].PRCITY);
+      this.PrDistrict.setValue(this.objTempEmpAddress[0].PRDISTRICT);
+      this.PrPin.setValue(this.objTempEmpAddress[0].PRPIN);
+      this.PrPhone.setValue(this.objTempEmpAddress[0].PRPHONE);
+      this.PrFax.setValue(this.objTempEmpAddress[0].PRFAX);
+      this.PrContact.setValue(this.objTempEmpAddress[0].PRCONTACT);*/
+      /*EMP_LOCATION - Ends*/
+
+      console.log(this.objTempEmpAddress);
+
+    }, error => console.error(error));
+
   }
 
   onChangeSearch(search: string) {
